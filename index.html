@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>贈り物記録 | 頂き物と贈り物をiPhoneだけで記録するアプリ</title>
-  <meta name="description" content="贈り物記録は、頂き物や贈り物を写真、金額目安、日付、相手、メモ、リマインダーと一緒に端末内で記録するiPhoneアプリ構想です。人物別の履歴、誕生日や記念日の通知、返礼忘れ防止に対応します。">
+  <meta name="description" content="贈り物記録は、頂き物や贈り物を写真、金額目安、日付、相手、メモ、リマインダーと一緒に端末内で記録するiPhoneアプリです。人物別の履歴、誕生日や記念日の通知、返礼忘れ防止をiPhone内で管理します。">
   <link rel="canonical" href="https://okurimono-kiroku.bantex.jp/">
   <meta property="og:title" content="贈り物記録 | 頂き物と贈り物をiPhoneだけで記録するアプリ">
   <meta property="og:description" content="写真、相手、日付、金額目安、メモ、リマインダーをiPhone内でまとめて残す贈答記録アプリ。">
@@ -18,18 +18,19 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #1b2422;
-      --muted: #63706b;
-      --paper: #fffdf8;
-      --soft: #f5f1e8;
-      --line: #ded6c9;
-      --green: #0f6b5a;
-      --green-dark: #0a463c;
-      --red: #b94135;
-      --gold: #c2953a;
-      --mint: #dceee6;
+      --ink: #1f231f;
+      --sub: #615b53;
+      --paper: #fffaf0;
+      --paper-2: #f6efe3;
+      --line: #e0d5c3;
+      --green: #146757;
+      --green-dark: #0b453b;
+      --wine: #8b1e2d;
+      --gold: #c19338;
       --white: #ffffff;
-      --shadow: 0 22px 70px rgba(34, 42, 39, .14);
+      --shadow: 0 18px 48px rgba(62, 47, 30, .13);
+      --radius: 8px;
+      --inner: min(1120px, calc(100% - 32px));
     }
 
     * {
@@ -45,31 +46,53 @@
       font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
       color: var(--ink);
       background: var(--paper);
-      line-break: strict;
       letter-spacing: 0;
+      line-break: strict;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     img {
       display: block;
       max-width: 100%;
+      height: auto;
     }
 
     a {
       color: inherit;
     }
 
+    p {
+      margin: 0;
+      color: var(--sub);
+      line-height: 1.85;
+      text-wrap: pretty;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    h1, h2 {
+      font-family: "Noto Serif JP", "Noto Sans JP", serif;
+      font-weight: 900;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(222, 214, 201, .72);
-      background: rgba(255, 253, 248, .9);
-      backdrop-filter: blur(18px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(224, 213, 195, .78);
+      background: rgba(255, 250, 240, .93);
+      backdrop-filter: blur(16px);
     }
 
     .nav {
-      width: min(1120px, calc(100% - 32px));
-      min-height: 64px;
+      width: var(--inner);
+      min-height: 58px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -81,34 +104,24 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      color: var(--ink);
       font-weight: 900;
       text-decoration: none;
       white-space: nowrap;
     }
 
-    .brand-mark,
-    .brand-icon {
+    .brand img {
       width: 34px;
       height: 34px;
       border-radius: 8px;
-      border: 1px solid rgba(15, 107, 90, .25);
-      background: var(--mint);
-      object-fit: cover;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      color: var(--green-dark);
-      font-family: "Noto Serif JP", serif;
-      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(62, 47, 30, .12);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 18px;
-      color: var(--muted);
+      color: var(--sub);
       font-size: 14px;
       font-weight: 700;
     }
@@ -118,109 +131,62 @@
     }
 
     .button {
-      min-height: 44px;
+      min-height: 42px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 0 18px;
+      padding: 0 17px;
       border: 1px solid transparent;
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--green);
       color: var(--white);
       font-weight: 900;
       text-decoration: none;
       white-space: nowrap;
-      box-shadow: 0 12px 30px rgba(15, 107, 90, .22);
+      box-shadow: 0 12px 24px rgba(20, 103, 87, .2);
     }
 
     .button.secondary {
       background: transparent;
       color: var(--green-dark);
-      border-color: rgba(15, 107, 90, .28);
+      border-color: rgba(20, 103, 87, .28);
       box-shadow: none;
     }
 
     .hero {
-      position: relative;
-      min-height: calc(100svh - 64px);
-      display: grid;
-      align-items: center;
-      overflow: clip;
+      padding: 0;
       border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(255, 253, 248, .96), rgba(247, 241, 230, .96) 46%, rgba(237, 245, 240, .9));
-    }
-
-    .hero::after {
-      display: none;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      background: linear-gradient(135deg, #fffaf0 0%, #f5eddf 58%, #ecf4ee 100%);
     }
 
     .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(1120px, calc(100% - 32px));
+      width: var(--inner);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-      gap: 38px;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 34px;
       align-items: center;
-      padding: 58px 0 72px;
+      padding: 42px 0 46px;
     }
 
     .hero-copy {
-      grid-column: 1;
-      grid-row: 1;
-      max-width: 610px;
+      display: grid;
+      gap: 20px;
+      align-content: center;
     }
 
-    .hero-lockup {
-      display: flex;
+    .app-label {
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
+      gap: 12px;
+      width: fit-content;
     }
 
-    .hero-app-icon {
-      width: 70px;
-      height: 70px;
-      flex: 0 0 auto;
-      border-radius: 18px;
-      box-shadow: 0 18px 42px rgba(69, 38, 29, .16);
-    }
-
-    .hero-poster {
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      margin: 0;
-      overflow: hidden;
-      border: 1px solid rgba(194, 149, 58, .34);
-      border-radius: 8px;
-      background: var(--white);
-      box-shadow: 0 28px 90px rgba(69, 38, 29, .18);
-    }
-
-    .hero-poster img {
-      width: 100%;
-      height: auto;
-      object-fit: initial;
-      background: #fffaf0;
-    }
-
-    .poster-caption {
-      padding: 14px 16px 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-      background: rgba(255, 253, 248, .94);
+    .app-label img {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      box-shadow: 0 14px 30px rgba(62, 47, 30, .16);
     }
 
     .eyebrow {
@@ -228,453 +194,254 @@
       align-items: center;
       min-height: 30px;
       padding: 0 10px;
-      border: 1px solid rgba(185, 65, 53, .24);
-      background: rgba(255, 255, 255, .76);
-      color: var(--red);
+      border: 1px solid rgba(139, 30, 45, .18);
+      background: rgba(255, 255, 255, .74);
+      color: var(--wine);
       font-size: 13px;
       font-weight: 900;
-    }
-
-    h1, h2, h3 {
-      margin: 0;
-      line-height: 1.16;
-      letter-spacing: 0;
-      text-wrap: balance;
-      word-break: auto-phrase;
+      white-space: nowrap;
     }
 
     h1 {
-      max-width: 620px;
-      margin-top: 24px;
-      font-family: "Noto Serif JP", "Noto Sans JP", serif;
-      font-size: 46px;
-      font-weight: 900;
-    }
-
-    .headline-line {
-      display: block;
-      white-space: normal;
+      max-width: 560px;
+      font-size: 52px;
     }
 
     .lead {
-      max-width: 650px;
-      margin: 24px 0 0;
-      color: #34423e;
-      font-size: 19px;
-      line-height: 1.9;
+      max-width: 560px;
+      color: #3c463f;
+      font-size: 17px;
       font-weight: 500;
-      text-wrap: pretty;
-      word-break: auto-phrase;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
+      gap: 10px;
     }
 
     .hero-points {
-      grid-column: 1;
-      grid-row: 2;
-      width: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      margin-top: 0;
-      border: 1px solid rgba(222, 214, 201, .9);
-      background: rgba(222, 214, 201, .9);
+      max-width: 590px;
+      border: 1px solid var(--line);
+      background: var(--line);
       box-shadow: var(--shadow);
     }
 
     .hero-point {
-      min-height: 104px;
-      padding: 18px;
-      background: rgba(255, 255, 255, .86);
+      min-height: 92px;
+      padding: 15px;
+      background: rgba(255, 255, 255, .88);
     }
 
     .hero-point strong {
       display: block;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
       color: var(--green-dark);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .hero-point span {
-      color: var(--muted);
+      color: var(--sub);
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    section {
-      padding: 88px 0;
-    }
-
-    .section-inner {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .section-title {
-      max-width: 780px;
-    }
-
-    .section-title .eyebrow {
-      margin-bottom: 14px;
-    }
-
-    h2 {
-      font-family: "Noto Serif JP", "Noto Sans JP", serif;
-      font-size: 40px;
-      font-weight: 900;
-    }
-
-    .section-title p {
-      max-width: 700px;
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.9;
-      text-wrap: pretty;
-    }
-
-    .problem {
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .problem .section-title p,
-    .problem .problem-item p {
-      color: rgba(255, 255, 255, .72);
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin-top: 36px;
-      background: rgba(255, 255, 255, .14);
-      border: 1px solid rgba(255, 255, 255, .14);
-    }
-
-    .problem-item {
-      min-height: 188px;
-      padding: 24px;
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .problem-item b {
-      display: block;
-      color: #f4d28a;
-      font-size: 28px;
-      line-height: 1;
-      margin-bottom: 18px;
-    }
-
-    .problem-item h3 {
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .problem-item p {
-      margin: 12px 0 0;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .feature-band {
-      background: linear-gradient(180deg, var(--paper), #eef5ef);
-    }
-
-    .feature-layout {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      align-items: center;
-      gap: 42px;
-      margin-top: 38px;
-    }
-
-    .image-panel {
+    .image-card {
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--white);
       box-shadow: var(--shadow);
     }
 
-    .image-panel img {
+    .image-card img {
       width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
     }
 
-    .image-panel.feature-image img {
-      aspect-ratio: 4 / 3;
+    .image-card figcaption {
+      padding: 12px 14px 14px;
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.65;
     }
 
-    .feature-list {
+    section {
+      padding: 56px 0;
+    }
+
+    .section-inner {
+      width: var(--inner);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 820px;
+      margin-bottom: 28px;
+    }
+
+    .section-title .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      max-width: 820px;
+      font-size: 40px;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    .dark {
+      background: #17221f;
+      color: var(--white);
+    }
+
+    .dark p,
+    .dark .card p {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .problem-grid,
+    .workflow-grid,
+    .feature-grid,
+    .pricing-grid,
+    .faq-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
     }
 
-    .feature-item {
-      min-height: 172px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .84);
+    .problem-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .icon {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 15px;
-      background: var(--green);
-      color: var(--white);
-      font-weight: 900;
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .88);
+    }
+
+    .dark .card {
+      border-color: rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .problem-card {
+      min-height: 150px;
+      padding: 20px;
+    }
+
+    .problem-card b {
+      display: block;
+      margin-bottom: 14px;
+      color: #f4d28a;
+      font-family: "Noto Serif JP", serif;
+      font-size: 28px;
       line-height: 1;
     }
 
-    .feature-item h3 {
+    .problem-card h3,
+    .feature-card h3,
+    .workflow-card h3,
+    .gallery-card h3,
+    .plan h3 {
       font-size: 18px;
+      line-height: 1.45;
     }
 
-    .feature-item p {
-      margin: 10px 0 0;
-      color: var(--muted);
+    .problem-card p,
+    .feature-card p,
+    .workflow-card p,
+    .gallery-card p {
+      margin-top: 9px;
       font-size: 14px;
-      line-height: 1.8;
-      text-wrap: pretty;
+      line-height: 1.75;
+    }
+
+    .feature-section {
+      background: linear-gradient(180deg, var(--paper), #eef5ef);
+    }
+
+    .feature-layout,
+    .notice-layout,
+    .privacy-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .feature-layout .image-card img {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #f8f1e7;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card {
+      min-height: 142px;
+      padding: 18px;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 900;
     }
 
     .workflow {
-      background: #fbf7ed;
+      background: #fbf6eb;
     }
 
     .workflow-grid {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin-top: 36px;
-      border: 1px solid var(--line);
-      background: var(--line);
     }
 
-    .workflow-step {
-      min-height: 214px;
-      padding: 24px;
+    .workflow-card {
+      padding: 20px;
       background: var(--white);
     }
 
     .step-number {
-      color: var(--red);
+      display: block;
+      margin-bottom: 14px;
+      color: var(--wine);
       font-family: "Noto Serif JP", serif;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 900;
-    }
-
-    .workflow-step h3 {
-      margin-top: 18px;
-      font-size: 18px;
-    }
-
-    .workflow-step p {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
     }
 
     .screens {
       background: var(--green-dark);
       color: var(--white);
-      overflow: hidden;
+    }
+
+    .screens .section-title {
+      margin-bottom: 24px;
     }
 
     .screens .section-title p {
-      color: rgba(255, 255, 255, .75);
+      color: rgba(255, 255, 255, .76);
     }
 
-    .screen-layout {
-      display: grid;
-      grid-template-columns: .88fr 1.12fr;
-      align-items: center;
-      gap: 44px;
-      margin-top: 38px;
-    }
-
-    .phone-photo {
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .08);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .24);
-    }
-
-    .phone-photo img {
+    .screen-showcase img {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-
-    .app-mockups {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .phone {
-      max-width: 310px;
-      min-height: 616px;
-      margin: 0 auto;
-      padding: 13px;
-      border: 1px solid rgba(255, 255, 255, .18);
-      border-radius: 34px;
-      background: #101715;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
-    }
-
-    .phone-screen {
-      min-height: 588px;
-      padding: 22px 18px;
-      border-radius: 24px;
-      background: #fffdf8;
-      color: var(--ink);
-    }
-
-    .phone-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .phone-title {
-      font-weight: 900;
-      line-height: 1.4;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 10px;
-      border-radius: 999px;
-      background: var(--mint);
-      color: var(--green-dark);
-      font-size: 12px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .input-card,
-    .timeline-card,
-    .reminder-card {
-      border: 1px solid #e3dbcc;
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .input-card {
-      padding: 12px;
-    }
-
-    .photo-slot {
-      height: 126px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      border: 1px dashed #c7bca7;
-      border-radius: 8px;
-      background: #f7f1e6;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 84px 1fr;
-      gap: 8px;
-      align-items: center;
-      min-height: 40px;
-      border-top: 1px solid #eee7dc;
-      font-size: 13px;
-    }
-
-    .form-row span:first-child {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .form-row span:last-child {
-      font-weight: 900;
-    }
-
-    .save-bar {
-      display: grid;
-      place-items: center;
-      min-height: 44px;
-      margin-top: 14px;
-      border-radius: 8px;
-      background: var(--green);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 900;
-    }
-
-    .timeline-card {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 10px;
-      padding: 12px;
-      margin-top: 10px;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      background: var(--mint);
-      color: var(--green-dark);
-      font-weight: 900;
-    }
-
-    .timeline-card strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 13px;
-    }
-
-    .timeline-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .reminder-card {
-      padding: 14px;
-      margin-top: 14px;
-      border-color: rgba(185, 65, 53, .35);
-      background: #fff7f2;
-    }
-
-    .reminder-card strong {
-      color: var(--red);
-      font-size: 13px;
-    }
-
-    .reminder-card p {
-      margin: 7px 0 0;
-      color: #70443d;
-      font-size: 12px;
-      line-height: 1.6;
+      object-fit: contain;
+      background: #f8f1e7;
     }
 
     .gallery {
@@ -683,54 +450,39 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 36px;
+      gap: 14px;
+      grid-template-columns: 1.05fr 1.05fr .9fr;
     }
 
     .gallery-card {
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
       background: var(--white);
     }
 
     .gallery-card img {
       width: 100%;
+      background: #f8f1e7;
+      object-fit: contain;
+    }
+
+    .gallery-card.wide img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .gallery-card.standard img {
       aspect-ratio: 4 / 3;
-      object-fit: cover;
     }
 
     .gallery-card.tall img {
       aspect-ratio: 4 / 5;
-      object-position: center top;
     }
 
     .gallery-card div {
-      padding: 18px;
-    }
-
-    .gallery-card h3 {
-      font-size: 17px;
-    }
-
-    .gallery-card p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.75;
+      padding: 17px;
     }
 
     .notice {
-      background: #edf5f0;
-    }
-
-    .notice-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 34px;
-      align-items: center;
-      margin-top: 34px;
+      background: #edf5ef;
     }
 
     .notice-list {
@@ -739,7 +491,7 @@
     }
 
     .notice-item {
-      padding: 18px;
+      padding: 17px 18px;
       border-left: 5px solid var(--green);
       background: var(--white);
     }
@@ -751,117 +503,98 @@
     }
 
     .notice-item p {
-      margin: 0;
-      color: var(--muted);
       font-size: 14px;
       line-height: 1.75;
     }
 
-    .reminder-visual img {
-      height: auto;
-      aspect-ratio: auto;
-      object-fit: initial;
-      object-position: center top;
+    .notice-layout .image-card {
+      max-width: 520px;
+      justify-self: center;
+    }
+
+    .notice-layout .image-card img {
+      width: 100%;
+      object-fit: contain;
+      background: #f8f1e7;
     }
 
     .privacy {
-      background: var(--ink);
+      background: #151f1c;
       color: var(--white);
     }
 
-    .privacy-layout {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 34px;
-      align-items: center;
-    }
-
     .privacy p {
-      color: rgba(255, 255, 255, .72);
-    }
-
-    .privacy img {
-      width: 100%;
-      border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 8px;
-      box-shadow: 0 22px 70px rgba(0, 0, 0, .25);
+      color: rgba(255, 255, 255, .74);
     }
 
     .privacy-points {
       display: grid;
-      gap: 14px;
-      margin-top: 28px;
+      gap: 12px;
+      margin-top: 22px;
     }
 
     .privacy-point {
-      padding: 18px;
+      padding: 16px;
       border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius);
       background: rgba(255, 255, 255, .06);
     }
 
     .privacy-point strong {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: #f4d28a;
     }
 
-    .pricing {
-      background: #fbf7ed;
+    .privacy .image-card {
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(255, 255, 255, .14);
     }
 
-    .pricing-layout {
-      display: grid;
+    .pricing {
+      background: #fbf6eb;
+    }
+
+    .pricing-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 34px;
+      align-items: stretch;
     }
 
     .plan {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      padding: 24px;
       background: var(--white);
     }
 
-    .plan-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 18px;
-      border-radius: 16px;
-      box-shadow: 0 16px 36px rgba(69, 38, 29, .14);
-    }
-
     .plan.recommended {
-      border-color: rgba(15, 107, 90, .45);
+      border-color: rgba(20, 103, 87, .34);
       box-shadow: var(--shadow);
     }
 
-    .plan h3 {
-      font-size: 22px;
+    .plan-icon {
+      width: 58px;
+      height: 58px;
+      margin-bottom: 14px;
+      border-radius: 15px;
     }
 
     .price {
-      margin: 14px 0;
+      margin: 12px 0;
       color: var(--green-dark);
-      font-size: 28px;
+      font-size: 27px;
       font-weight: 900;
     }
 
     .plan-note {
-      margin: -4px 0 0;
-      color: var(--muted);
       font-size: 14px;
-      line-height: 1.75;
-      text-wrap: pretty;
     }
 
     .plan ul {
       display: grid;
-      gap: 9px;
-      margin: 18px 0 0;
+      gap: 8px;
+      margin: 16px 0 0;
       padding: 0;
       list-style: none;
-      color: var(--muted);
+      color: var(--sub);
       line-height: 1.7;
     }
 
@@ -877,63 +610,54 @@
     }
 
     .faq-grid {
-      display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 34px;
     }
 
     details {
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--white);
     }
 
     summary {
       cursor: pointer;
-      padding: 18px;
+      padding: 17px;
       font-weight: 900;
       line-height: 1.6;
     }
 
     details p {
-      margin: 0;
-      padding: 0 18px 18px;
-      color: var(--muted);
-      line-height: 1.8;
-      text-wrap: pretty;
+      padding: 0 17px 17px;
+      font-size: 14px;
     }
 
     .final-cta {
-      padding: 80px 0;
+      padding: 58px 0;
       background: var(--green);
       color: var(--white);
       text-align: center;
     }
 
     .final-cta h2 {
-      max-width: 760px;
       margin: 0 auto;
     }
 
     .final-cta p {
       max-width: 680px;
-      margin: 18px auto 0;
-      color: rgba(255, 255, 255, .82);
-      font-size: 17px;
-      line-height: 1.9;
+      margin: 14px auto 0;
+      color: rgba(255, 255, 255, .84);
     }
 
     .final-cta .button {
-      margin-top: 28px;
+      margin-top: 22px;
       background: var(--white);
       color: var(--green-dark);
       box-shadow: none;
     }
 
     .site-footer {
-      padding: 28px 0;
-      background: #121a18;
+      padding: 24px 0;
+      background: #111816;
       color: rgba(255, 255, 255, .66);
       font-size: 13px;
     }
@@ -941,16 +665,8 @@
     .site-footer .section-inner {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
-    }
-
-    .keep {
-      white-space: nowrap;
-    }
-
-    p, li, summary, .hero-point span, .feature-item p, .gallery-card p, .problem-item p, .workflow-step p {
-      word-break: auto-phrase;
     }
 
     @media (max-width: 920px) {
@@ -958,43 +674,26 @@
         display: none;
       }
 
+      .hero-inner,
+      .feature-layout,
+      .notice-layout,
+      .privacy-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        gap: 24px;
+        padding: 34px 0 38px;
+      }
+
       h1 {
-        font-size: 40px;
+        font-size: 44px;
       }
 
       h2 {
-        font-size: 32px;
+        font-size: 34px;
       }
 
-      .hero {
-        min-height: auto;
-      }
-
-      .hero::after {
-        display: none;
-      }
-
-      .hero-image {
-        opacity: .72;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .hero-copy,
-      .hero-poster,
-      .hero-points {
-        grid-column: auto;
-        grid-row: auto;
-      }
-
-      .hero-inner {
-        padding: 64px 0 44px;
-      }
-
-      .hero-points,
       .problem-grid,
       .workflow-grid,
       .gallery-grid,
@@ -1002,90 +701,97 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .feature-layout,
-      .screen-layout,
-      .notice-layout,
-      .privacy-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .screen-layout {
-        gap: 30px;
-      }
-
-      .phone-photo {
-        max-width: 420px;
-        margin: 0 auto;
+      .notice-layout .image-card {
+        max-width: 460px;
+        justify-self: start;
       }
     }
 
     @media (max-width: 640px) {
-      .nav {
-        width: min(100% - 24px, 1120px);
+      :root {
+        --inner: min(100% - 24px, 1120px);
       }
 
-      .brand span:last-child {
+      .nav {
+        min-height: 56px;
+      }
+
+      .brand span {
         font-size: 15px;
       }
 
       .button {
-        min-height: 42px;
+        min-height: 40px;
         padding: 0 13px;
         font-size: 13px;
       }
 
-      .hero-inner,
-      .section-inner {
-        width: min(100% - 24px, 1120px);
+      .hero-inner {
+        padding: 30px 0 34px;
+      }
+
+      .app-label {
+        gap: 10px;
+      }
+
+      .app-label img {
+        width: 56px;
+        height: 56px;
       }
 
       h1 {
-        font-size: 31px;
-      }
-
-      h2 {
-        font-size: 28px;
+        font-size: 32px;
       }
 
       .lead {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.78;
       }
 
       section {
-        padding: 62px 0;
+        padding: 42px 0;
+      }
+
+      .section-title {
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 27px;
+      }
+
+      .section-title p {
+        font-size: 15px;
+        line-height: 1.78;
       }
 
       .hero-points,
       .problem-grid,
-      .feature-list,
+      .feature-grid,
       .workflow-grid,
       .gallery-grid,
-      .app-mockups,
-      .pricing-layout,
+      .pricing-grid,
       .faq-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-point {
+      .hero-point,
+      .problem-card,
+      .feature-card,
+      .workflow-card {
         min-height: auto;
       }
 
-      .problem-item,
-      .workflow-step {
-        min-height: auto;
+      .gallery-card.tall img {
+        aspect-ratio: auto;
       }
 
-      .phone {
-        max-width: 292px;
-        min-height: 584px;
+      .notice-layout .image-card {
+        max-width: none;
       }
 
-      .phone-screen {
-        min-height: 556px;
-      }
-
-      .headline-line {
-        white-space: normal;
+      .site-footer .section-inner {
+        display: grid;
       }
     }
   </style>
@@ -1094,14 +800,14 @@
   <header class="site-header">
     <nav class="nav" aria-label="主要ナビゲーション">
       <a class="brand" href="#top" aria-label="贈り物記録トップへ">
-        <img class="brand-icon" src="assets/app-icon-premium.png" alt="" width="34" height="34">
+        <img src="assets/app-icon-premium.png" alt="" width="34" height="34">
         <span>贈り物記録</span>
       </a>
       <div class="nav-links">
         <a href="#features">できること</a>
+        <a href="#concept">画面</a>
         <a href="#reminders">通知</a>
-        <a href="#privacy">端末内保存</a>
-        <a class="button" href="#concept">構想を見る</a>
+        <a class="button" href="#pricing">価格を見る</a>
       </div>
     </nav>
   </header>
@@ -1110,39 +816,39 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner">
         <div class="hero-copy">
-          <div class="hero-lockup">
-            <img class="hero-app-icon" src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="70" height="70">
-            <span class="eyebrow">iPhoneアプリ開発中コンセプト</span>
+          <div class="app-label">
+            <img src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="64" height="64">
+            <span class="eyebrow">iPhone贈答記録アプリ</span>
           </div>
-          <h1 id="hero-title"><span class="headline-line">贈り物を、忘れない。</span><span class="headline-line">大切な日を、ちゃんと贈れる。</span></h1>
-          <p class="lead">写真、品名、金額目安、日付、相手、メモ、準備通知をまとめて記録。お中元、お歳暮、誕生日、記念日、内祝い、手土産まで、贈答管理をiPhoneだけで続けやすくします。</p>
+          <h1 id="hero-title">贈り物を、忘れない。大切な日を、ちゃんと贈れる。</h1>
+          <p class="lead">写真、品名、金額目安、日付、相手、メモ、準備通知をまとめて記録。お中元、お歳暮、誕生日、記念日、内祝い、手土産まで、iPhoneだけで整理できます。</p>
           <div class="hero-actions">
-            <a class="button" href="#features">機能を見る</a>
-            <a class="button secondary" href="#reminders">リマインダーを見る</a>
+            <a class="button" href="#concept">画面を見る</a>
+            <a class="button secondary" href="#features">機能を見る</a>
+          </div>
+          <div class="hero-points" aria-label="贈り物記録の主な特徴">
+            <div class="hero-point">
+              <strong>写真で残す</strong>
+              <span>箱、熨斗、カード、レシート、送り状まで記録。</span>
+            </div>
+            <div class="hero-point">
+              <strong>人ごとに見る</strong>
+              <span>送った履歴と、もらった履歴を一緒に確認。</span>
+            </div>
+            <div class="hero-point">
+              <strong>通知で防ぐ</strong>
+              <span>誕生日、記念日、配送日前に準備確認。</span>
+            </div>
           </div>
         </div>
-        <figure class="hero-poster">
-          <img src="assets/hero-flyer.png" alt="贈り物記録の利用シーンとキャッチコピーを入れたチラシ風ヒーロービジュアル" width="1672" height="941">
-          <figcaption class="poster-caption">写真・相手・日付・リマインダーを端末内で記録する、贈り物記録のメインビジュアル。</figcaption>
+        <figure class="image-card">
+          <img src="assets/hero-flyer.png" alt="贈り物記録の利用シーンとキャッチコピーを入れたメインビジュアル" width="1672" height="941">
+          <figcaption>写真・相手・日付・リマインダーを端末内で記録する、贈り物記録のメインビジュアル。</figcaption>
         </figure>
-        <div class="hero-points" aria-label="贈り物記録の主な特徴">
-          <div class="hero-point">
-            <strong>写真で残す</strong>
-            <span>箱、熨斗、カード、レシート、送り状まで記録。</span>
-          </div>
-          <div class="hero-point">
-            <strong>人ごとに見る</strong>
-            <span>送った・もらった履歴を会話のように確認。</span>
-          </div>
-          <div class="hero-point">
-            <strong>通知で防ぐ</strong>
-            <span>誕生日、記念日、配送日の前に用意確認。</span>
-          </div>
-        </div>
-        </div>
+      </div>
     </section>
 
-    <section class="problem" aria-labelledby="problem-title">
+    <section class="dark" aria-labelledby="problem-title">
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">よくある困りごと</span>
@@ -1150,22 +856,22 @@
           <p>もらった品物、だいたいの金額、返礼済みかどうか、次の誕生日やお歳暮の予定。大事なのに、紙のメモや写真フォルダ、LINE履歴に散らばりがちです。</p>
         </div>
         <div class="problem-grid">
-          <article class="problem-item">
+          <article class="problem-card card">
             <b>01</b>
             <h3>去年何を送ったか思い出せない</h3>
             <p>同じものを続けて送ったり、金額感がずれたりしやすくなります。</p>
           </article>
-          <article class="problem-item">
+          <article class="problem-card card">
             <b>02</b>
             <h3>お返しのタイミングを逃す</h3>
             <p>頂いた直後は覚えていても、忙しいと準備が後回しになります。</p>
           </article>
-          <article class="problem-item">
+          <article class="problem-card card">
             <b>03</b>
-            <h3>家族や取引先ごとの履歴が見づらい</h3>
+            <h3>相手ごとの履歴が見づらい</h3>
             <p>写真、メモ、連絡先、日付が別々だと確認に時間がかかります。</p>
           </article>
-          <article class="problem-item">
+          <article class="problem-card card">
             <b>04</b>
             <h3>個人情報をクラウドに置きたくない</h3>
             <p>人間関係の記録だからこそ、端末内で完結する安心感が必要です。</p>
@@ -1174,47 +880,37 @@
       </div>
     </section>
 
-    <section id="features" class="feature-band" aria-labelledby="features-title">
-      <div class="section-inner">
-        <div class="section-title">
-          <span class="eyebrow">できること</span>
-          <h2 id="features-title">写真を撮って、相手を選んで、次にやることまで残せます。</h2>
-          <p>入力は少なく、見返す時は強く。頂き物と贈り物の両方を同じ形式で記録し、あとから日付順、相手順、未返礼、予定ありで探せる設計です。</p>
-        </div>
-        <div class="feature-layout">
-          <figure class="image-panel feature-image">
-            <img src="assets/usage-recording.png" alt="家族の誕生日後に頂き物を写真、相手、日付、金額目安付きで記録する使用シーン" width="1448" height="1086">
-          </figure>
-          <div class="feature-list">
-            <article class="feature-item">
+    <section id="features" class="feature-section" aria-labelledby="features-title">
+      <div class="section-inner feature-layout">
+        <figure class="image-card">
+          <img src="assets/usage-recording.png" alt="家族の誕生日後に頂き物を写真、相手、日付、金額目安付きで記録する使用シーン" width="1448" height="1086">
+        </figure>
+        <div>
+          <div class="section-title">
+            <span class="eyebrow">できること</span>
+            <h2 id="features-title">写真を撮って、相手を選んで、次にやることまで残せます。</h2>
+            <p>頂き物と贈り物の両方を同じ形式で記録。あとから日付順、相手順、未返礼、予定ありで探せる設計です。</p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card card">
               <span class="icon">写</span>
               <h3>写真付きで記録</h3>
-              <p>品物、熨斗、カード、レシート、送り状を写真で残せます。あとから商品名を忘れても見返せます。</p>
+              <p>品物、熨斗、カード、レシート、送り状を写真で残せます。</p>
             </article>
-            <article class="feature-item">
+            <article class="feature-card card">
               <span class="icon">人</span>
               <h3>連絡先と紐づけ</h3>
-              <p>許可した連絡先から相手を選び、誰から頂いたか、誰に送ったかを整理できます。</p>
+              <p>許可した連絡先から相手を選び、人物別に整理できます。</p>
             </article>
-            <article class="feature-item">
+            <article class="feature-card card">
               <span class="icon">¥</span>
               <h3>金額目安を保存</h3>
-              <p>頂き物は想定金額、贈り物は購入金額を記録。次回の金額感を合わせやすくします。</p>
+              <p>頂き物は想定金額、贈り物は購入金額を残せます。</p>
             </article>
-            <article class="feature-item">
+            <article class="feature-card card">
               <span class="icon">歴</span>
-              <h3>返信のように結び付け</h3>
-              <p>頂いた記録とお返しの記録を関連付け、人ごとの履歴で自然に追えます。</p>
-            </article>
-            <article class="feature-item">
-              <span class="icon">並</span>
-              <h3>日付順・対象者順</h3>
-              <p>最近の記録、人物別、未返礼、予定ありなど、必要な見方に切り替えられます。</p>
-            </article>
-            <article class="feature-item">
-              <span class="icon">鍵</span>
-              <h3>端末内に保存</h3>
-              <p>画像を含む贈答記録を、外部送信しない設計で扱います。家族や取引先の情報を守ります。</p>
+              <h3>返礼履歴を確認</h3>
+              <p>頂いた記録とお返しの記録を結び付けて追えます。</p>
             </article>
           </div>
         </div>
@@ -1229,25 +925,25 @@
           <p>贈り物は配送日や渡す日が決まった時点で記録できます。頂き物は写真と相手だけ先に残し、金額目安やメモはあとから追記できます。</p>
         </div>
         <div class="workflow-grid">
-          <article class="workflow-step">
-            <div class="step-number">1</div>
+          <article class="workflow-card card">
+            <span class="step-number">1</span>
             <h3>写真を撮る</h3>
-            <p>品物、包装、カード、レシートを撮影。写真フォルダに埋もれない形で保存します。</p>
+            <p>品物、包装、カード、レシートを撮影して保存します。</p>
           </article>
-          <article class="workflow-step">
-            <div class="step-number">2</div>
+          <article class="workflow-card card">
+            <span class="step-number">2</span>
             <h3>相手と日付を入れる</h3>
-            <p>連絡先から選ぶか、名前だけで登録。もらった日、送る日、届ける日を分けて扱えます。</p>
+            <p>連絡先から選ぶか、名前だけで登録できます。</p>
           </article>
-          <article class="workflow-step">
-            <div class="step-number">3</div>
+          <article class="workflow-card card">
+            <span class="step-number">3</span>
             <h3>金額とメモを残す</h3>
-            <p>想定金額、品名、購入店、好み、避けたい品物などを簡単に残します。</p>
+            <p>想定金額、品名、購入店、好みを簡単に残します。</p>
           </article>
-          <article class="workflow-step">
-            <div class="step-number">4</div>
+          <article class="workflow-card card">
+            <span class="step-number">4</span>
             <h3>通知で準備する</h3>
-            <p>2週間前、1週間前、前日など、設定したタイミングで準備確認を通知します。</p>
+            <p>2週間前、1週間前、前日などに準備確認を出します。</p>
           </article>
         </div>
       </div>
@@ -1257,59 +953,12 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">画面イメージ</span>
-          <h2 id="screens-title">一覧ではなく、人との贈答履歴として見られます。</h2>
-          <p>ある人との間で、頂いた記録と送った記録が時系列に並びます。返礼が必要なもの、準備中のもの、次の記念日を同じ画面で確認できます。</p>
+          <h2 id="screens-title">一覧、人物履歴、カレンダーをひとつのアプリに。</h2>
+          <p>日付順の一覧、相手ごとの贈答履歴、誕生日や記念日のカレンダーを切り替えて確認できます。</p>
         </div>
-        <div class="screen-layout">
-          <figure class="phone-photo">
-            <img src="assets/ui-screens.png" alt="日付順一覧、人物別履歴、記念日カレンダーを並べた贈り物記録のUI画面イメージ" width="1672" height="941">
-          </figure>
-          <div class="app-mockups" aria-label="贈り物記録のUI構成例">
-            <div class="phone">
-              <div class="phone-screen">
-                <div class="phone-top">
-                  <div class="phone-title">新しい記録</div>
-                  <span class="pill">もらった</span>
-                </div>
-                <div class="input-card">
-                  <div class="photo-slot">写真を追加</div>
-                  <div class="form-row"><span>相手</span><span>山田さん</span></div>
-                  <div class="form-row"><span>日付</span><span>2026年6月8日</span></div>
-                  <div class="form-row"><span>品名</span><span>焼き菓子</span></div>
-                  <div class="form-row"><span>金額目安</span><span>3,000円</span></div>
-                  <div class="form-row"><span>メモ</span><span>出産祝いのお礼</span></div>
-                  <div class="save-bar">記録する</div>
-                </div>
-              </div>
-            </div>
-            <div class="phone">
-              <div class="phone-screen">
-                <div class="phone-top">
-                  <div class="phone-title">山田さん</div>
-                  <span class="pill">履歴</span>
-                </div>
-                <div class="timeline-card">
-                  <div class="avatar">頂</div>
-                  <div>
-                    <strong>焼き菓子を頂いた</strong>
-                    <p>2026年6月8日。金額目安3,000円。返礼候補あり。</p>
-                  </div>
-                </div>
-                <div class="timeline-card">
-                  <div class="avatar">贈</div>
-                  <div>
-                    <strong>タオルセットを贈った</strong>
-                    <p>2026年6月20日配送予定。2週間前に準備通知。</p>
-                  </div>
-                </div>
-                <div class="reminder-card">
-                  <strong>準備しましたか？</strong>
-                  <p>山田さんの誕生日まで14日です。候補メモと去年の履歴を確認できます。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <figure class="image-card screen-showcase">
+          <img src="assets/ui-screens.png" alt="日付順一覧、人物別履歴、記念日カレンダーを並べた贈り物記録のUI画面イメージ" width="1672" height="941">
+        </figure>
       </div>
     </section>
 
@@ -1318,28 +967,28 @@
         <div class="section-title">
           <span class="eyebrow">使用シーン</span>
           <h2 id="scenes-title">家族にも、親戚にも、取引先にも使える贈答メモ。</h2>
-          <p>日本の贈答は、時期、相手、金額感、返礼の有無が大切です。贈り物記録は、生活の中で発生する小さな記録を一冊にまとめます。</p>
+          <p>日本の贈答は、時期、相手、金額感、返礼の有無が大切です。生活の中で発生する小さな記録を一冊にまとめます。</p>
         </div>
         <div class="gallery-grid">
-          <article class="gallery-card">
+          <article class="gallery-card standard card">
             <img src="assets/usage-recording.png" alt="家族の贈り物を受け取った後に写真付きで記録する使用シーン" width="1448" height="1086">
             <div>
               <h3>もらった直後に記録</h3>
-              <p>写真、相手、日付、金額目安をその場で保存。あとから返礼候補やメモを追記できます。</p>
+              <p>写真、相手、日付、金額目安をその場で保存。返礼候補やメモも追記できます。</p>
             </div>
           </article>
-          <article class="gallery-card">
+          <article class="gallery-card wide card">
             <img src="assets/ui-screens.png" alt="連絡先や記念日と贈答履歴を結び付けて管理するアプリ画面" width="1672" height="941">
             <div>
-              <h3>一覧・人物・カレンダーで確認</h3>
-              <p>日付順、対象者順、誕生日や記念日の予定を切り替えて、次に必要な行動を見つけられます。</p>
+              <h3>見たい軸で確認</h3>
+              <p>日付順、対象者順、誕生日や記念日の予定を切り替えられます。</p>
             </div>
           </article>
-          <article class="gallery-card tall">
+          <article class="gallery-card tall card">
             <img src="assets/reminder-flyer.png" alt="2週間前の通知と初期PRO価格300円を訴求する贈り物記録のチラシ風ビジュアル" width="1122" height="1402">
             <div>
               <h3>お返し忘れを防ぐ</h3>
-              <p>頂いた記録と返礼の記録を結び付け、必要なタイミングで「用意しましたか？」を通知します。</p>
+              <p>必要なタイミングで「用意しましたか？」を通知します。</p>
             </div>
           </article>
         </div>
@@ -1347,31 +996,31 @@
     </section>
 
     <section id="reminders" class="notice" aria-labelledby="reminders-title">
-      <div class="section-inner">
-        <div class="section-title">
-          <span class="eyebrow">通知設計</span>
-          <h2 id="reminders-title">「用意しましたか？」を、ちょうど良い時期に。</h2>
-          <p>通知は贈り物アプリの中心機能です。買う前、買った後、届ける前、誕生日の前で必要なリマインダーが違うため、予定の種類ごとに通知タイミングを変えられる設計にします。</p>
-        </div>
-        <div class="notice-layout">
+      <div class="section-inner notice-layout">
+        <div>
+          <div class="section-title">
+            <span class="eyebrow">通知設計</span>
+            <h2 id="reminders-title">「用意しましたか？」を、ちょうど良い時期に。</h2>
+            <p>買う前、買った後、届ける前、誕生日の前で必要なリマインダーは違います。予定の種類ごとに通知タイミングを変えられる設計です。</p>
+          </div>
           <div class="notice-list">
             <article class="notice-item">
               <strong>配送日・渡す日の準備通知</strong>
-              <p>2週間前、1週間前、3日前、前日などから選択。買った時点で届ける日を入れられます。</p>
+              <p>2週間前、1週間前、3日前、前日などから選択できます。</p>
             </article>
             <article class="notice-item">
               <strong>誕生日・記念日の通知</strong>
-              <p>相手ごとに誕生日や記念日を登録し、毎年自動で準備確認を出します。</p>
+              <p>相手ごとに日付を登録し、毎年自動で準備確認を出します。</p>
             </article>
             <article class="notice-item">
               <strong>未返礼の確認通知</strong>
-              <p>頂いた記録に返礼が紐づいていない場合だけ、あとで確認する通知を出せます。</p>
+              <p>返礼が紐づいていない記録だけ、あとで確認できます。</p>
             </article>
           </div>
-          <figure class="image-panel reminder-visual">
-            <img src="assets/reminder-flyer.png" alt="大切な日をちゃんと贈れることを伝える通知機能とPRO価格のプロモーション画像" width="1122" height="1402">
-          </figure>
         </div>
+        <figure class="image-card">
+          <img src="assets/reminder-flyer.png" alt="大切な日をちゃんと贈れることを伝える通知機能とPRO価格のプロモーション画像" width="1122" height="1402">
+        </figure>
       </div>
     </section>
 
@@ -1380,35 +1029,37 @@
         <div>
           <span class="eyebrow">プライバシー</span>
           <h2 id="privacy-title">人間関係の記録だから、基本は端末内。</h2>
-          <p>贈答履歴には、相手の名前、住所につながる情報、金額感、家族行事などが含まれます。贈り物記録は、外部サーバーに送らずiPhone内で管理する前提のアプリとして設計します。</p>
+          <p>贈答履歴には、相手の名前、金額感、家族行事などが含まれます。外部サーバーに送らず、iPhone内で管理する前提のアプリとして設計します。</p>
           <div class="privacy-points">
             <div class="privacy-point">
               <strong>画像も記録もアプリ内保存</strong>
-              <p>写真付きの贈答履歴を端末内に保存し、必要な時にだけ見返せるようにします。</p>
+              <p>写真付きの贈答履歴を、必要な時にだけ見返せます。</p>
             </div>
             <div class="privacy-point">
               <strong>連絡先は許可した時だけ</strong>
-              <p>連絡先連携は任意。名前だけの手入力でも使える設計にします。</p>
+              <p>連絡先連携は任意。名前だけの手入力でも使えます。</p>
             </div>
             <div class="privacy-point">
               <strong>書き出しはユーザー操作で</strong>
-              <p>一覧保存は、本人が選んだ時だけ行うPRO機能として検討します。</p>
+              <p>一覧保存は、本人が選んだ時だけ行うPRO機能です。</p>
             </div>
           </div>
         </div>
-        <img src="assets/ui-screens.png" alt="端末内で連絡先、贈答履歴、記念日カレンダーを扱う贈り物記録の画面イメージ" width="1672" height="941">
+        <figure class="image-card screen-showcase">
+          <img src="assets/ui-screens.png" alt="端末内で連絡先、贈答履歴、記念日カレンダーを扱う贈り物記録の画面イメージ" width="1672" height="941">
+        </figure>
       </div>
     </section>
 
-    <section class="pricing" aria-labelledby="pricing-title">
+    <section id="pricing" class="pricing" aria-labelledby="pricing-title">
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">提供案</span>
           <h2 id="pricing-title">まず無料で試せて、必要な人だけPROに。</h2>
           <p>毎日使うアプリではなく、必要な時に確実に役立つ台帳アプリです。通常2,000円のPRO版を、初期バージョン限定で300円にする想定です。</p>
         </div>
-        <div class="pricing-layout">
-          <article class="plan">
+        <div class="pricing-grid">
+          <article class="plan card">
             <h3>無料プラン</h3>
             <div class="price">¥0</div>
             <ul>
@@ -1417,8 +1068,8 @@
               <li>基本記録を端末内に保存</li>
             </ul>
           </article>
-          <article class="plan recommended">
-            <img class="plan-icon" src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="64" height="64">
+          <article class="plan recommended card">
+            <img class="plan-icon" src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="58" height="58">
             <h3>PRO版</h3>
             <div class="price">初期価格300円</div>
             <p class="plan-note">通常価格2,000円。初期バージョン限定価格です。</p>
@@ -1435,7 +1086,7 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">FAQ</span>
-          <h2 id="faq-title">贈り物記録アプリとして、最初に答えておきたいこと。</h2>
+          <h2 id="faq-title">最初に答えておきたいこと。</h2>
         </div>
         <div class="faq-grid">
           <details open>
@@ -1443,16 +1094,16 @@
             <p>家計簿ではありません。誰から何を頂いたか、誰に何を贈ったか、返礼や次回の予定を人ごとに残す贈答管理アプリです。</p>
           </details>
           <details>
-            <summary>頂き物の金額が分からない場合はどうしますか？</summary>
-            <p>想定金額としてだいたいの目安を入れる設計です。正確な金額よりも、次回の贈り物の金額感を合わせることを重視します。</p>
+            <summary>頂き物の金額が分からない場合は？</summary>
+            <p>想定金額として目安を入れる設計です。次回の贈り物の金額感を合わせることを重視します。</p>
           </details>
           <details>
             <summary>連絡先を使わなくても登録できますか？</summary>
-            <p>使えます。連絡先連携は任意で、名前だけの手入力でも人物別履歴を作れる設計にします。</p>
+            <p>使えます。連絡先連携は任意で、名前だけの手入力でも人物別履歴を作れます。</p>
           </details>
           <details>
             <summary>通知はどんな時に出せますか？</summary>
-            <p>配送日や渡す日の前、誕生日や記念日の前、未返礼の確認などに対応する想定です。2週間前などの期間は設定できるようにします。</p>
+            <p>配送日や渡す日の前、誕生日や記念日の前、未返礼の確認などに対応する想定です。</p>
           </details>
           <details>
             <summary>画像も端末内に保存できますか？</summary>
@@ -1460,7 +1111,7 @@
           </details>
           <details>
             <summary>仕事の手土産や取引先にも使えますか？</summary>
-            <p>使える設計にします。取引先ごとの履歴、金額感、好み、避けたい品物を残せるため、次回の準備が楽になります。</p>
+            <p>使える設計です。取引先ごとの履歴、金額感、好み、避けたい品物を残せます。</p>
           </details>
         </div>
       </div>
@@ -1469,7 +1120,7 @@
     <section class="final-cta" aria-labelledby="final-title">
       <div class="section-inner">
         <h2 id="final-title">贈り物の記憶を、失礼のない準備に変える。</h2>
-        <p>贈り物記録は、頂き物と贈り物を写真付きで残し、人ごとの履歴と通知で次の行動につなげるiPhoneアプリ構想です。</p>
+        <p>贈り物記録は、頂き物と贈り物を写真付きで残し、人ごとの履歴と通知で次の行動につなげるiPhoneアプリです。</p>
         <a class="button" href="#top">ページ上部へ戻る</a>
       </div>
     </section>
