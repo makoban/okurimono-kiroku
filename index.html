@@ -39,6 +39,8 @@
 
     html {
       scroll-behavior: smooth;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -48,8 +50,17 @@
       background: var(--paper);
       letter-spacing: 0;
       line-break: strict;
-      word-break: keep-all;
+      word-break: normal;
       overflow-wrap: break-word;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    @supports (overflow-x: clip) {
+      html,
+      body {
+        overflow-x: clip;
+      }
     }
 
     img {
@@ -92,6 +103,7 @@
 
     .nav {
       width: var(--inner);
+      max-width: 100%;
       min-height: 58px;
       margin: 0 auto;
       display: flex;
@@ -161,6 +173,7 @@
 
     .hero-inner {
       width: var(--inner);
+      max-width: 100%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
@@ -274,7 +287,22 @@
 
     .section-inner {
       width: var(--inner);
+      max-width: 100%;
       margin: 0 auto;
+    }
+
+    .nav > *,
+    .hero-inner > *,
+    .section-inner > *,
+    .problem-grid > *,
+    .workflow-grid > *,
+    .feature-grid > *,
+    .gallery-grid > *,
+    .pricing-grid > *,
+    .faq-grid > *,
+    .notice-list > *,
+    .privacy-points > * {
+      min-width: 0;
     }
 
     .section-title {
@@ -709,7 +737,7 @@
 
     @media (max-width: 640px) {
       :root {
-        --inner: min(100% - 24px, 1120px);
+        --inner: min(1120px, calc(100% - 24px));
       }
 
       .nav {
