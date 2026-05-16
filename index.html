@@ -493,6 +493,10 @@
       background: #f8f1e7;
     }
 
+    .mobile-screen-list {
+      display: none;
+    }
+
     .gallery {
       background: var(--paper);
     }
@@ -828,7 +832,61 @@
       }
 
       .gallery-card.tall img {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: auto;
+      }
+
+      .desktop-screen-composite {
+        display: none;
+      }
+
+      .mobile-screen-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .mobile-screen-card {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffaf0;
+      }
+
+      .mobile-screen-card img {
+        width: min(100%, 320px);
+        margin: 0 auto;
+        border: 1px solid rgba(224, 213, 195, .9);
+        border-radius: 28px;
+        box-shadow: 0 14px 34px rgba(55, 42, 26, .16);
+      }
+
+      .mobile-screen-card h3 {
+        margin-top: 14px;
+        font-size: 18px;
+      }
+
+      .mobile-screen-card p {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .gallery-card img {
+        aspect-ratio: auto;
+      }
+
+      .gallery-card.wide img {
+        width: min(100%, 320px);
+        margin: 16px auto 0;
+        border: 1px solid rgba(224, 213, 195, .9);
+        border-radius: 28px;
+        box-shadow: 0 14px 34px rgba(55, 42, 26, .14);
+      }
+
+      .hero .image-card picture img {
+        width: min(100%, 320px);
+        margin: 0 auto;
+        border-radius: 28px;
+        background: #fffaf0;
       }
 
       .notice-layout .image-card {
@@ -902,7 +960,10 @@
           </div>
         </div>
         <figure class="image-card">
-          <img src="assets/hero-flyer.png" alt="贈答メモリーの利用シーンとキャッチコピーを入れたメインビジュアル" width="1672" height="941">
+          <picture>
+            <source media="(max-width: 640px)" srcset="assets/manual-record.jpg">
+            <img src="assets/hero-flyer.png" alt="贈答メモリーの利用シーンとキャッチコピーを入れたメインビジュアル" width="1672" height="941">
+          </picture>
           <figcaption>写真・相手・日付・<span class="keep">リマインダー</span>を端末内で記録する、贈答メモリーの画面イメージ。</figcaption>
         </figure>
       </div>
@@ -1016,9 +1077,26 @@
           <h2 id="screens-title"><span class="keep">一覧、人物履歴、</span><span class="keep">カレンダーを</span><span class="keep">ひとつのアプリに。</span></h2>
           <p>日付順の一覧、相手ごとの贈答履歴、誕生日や記念日のカレンダーを切り替えて確認できます。</p>
         </div>
-        <figure class="image-card screen-showcase">
+        <figure class="image-card screen-showcase desktop-screen-composite">
           <img src="assets/ui-screens.png" alt="日付順一覧、人物別履歴、記念日カレンダーを並べた贈答メモリーのUI画面イメージ" width="1672" height="941">
         </figure>
+        <div class="mobile-screen-list" aria-label="贈答メモリーの主要画面">
+          <article class="mobile-screen-card">
+            <img src="assets/manual-record.jpg" alt="記録一覧画面。頂き物と贈り品を検索、絞り込みできる" width="368" height="800">
+            <h3>記録一覧</h3>
+            <p>頂き物と贈り品を検索し、未返礼や予定ありで絞り込めます。</p>
+          </article>
+          <article class="mobile-screen-card">
+            <img src="assets/manual-history.jpg" alt="人物履歴画面。相手ごとの贈答履歴を確認できる" width="368" height="800">
+            <h3>人物履歴</h3>
+            <p>相手ごとに、過去の頂き物と贈り品を時系列で見返せます。</p>
+          </article>
+          <article class="mobile-screen-card">
+            <img src="assets/manual-calendar.jpg" alt="カレンダー画面。誕生日や記念日の予定を月表示で確認できる" width="368" height="800">
+            <h3>カレンダー</h3>
+            <p>誕生日、記念日、配送予定、返礼予定を月表示で確認できます。</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1038,7 +1116,10 @@
             </div>
           </article>
           <article class="gallery-card wide card">
-            <img src="assets/ui-screens.png" alt="連絡先や記念日と贈答履歴を結び付けて管理するアプリ画面" width="1672" height="941">
+            <picture>
+              <source media="(max-width: 640px)" srcset="assets/manual-history.jpg">
+              <img src="assets/ui-screens.png" alt="連絡先や記念日と贈答履歴を結び付けて管理するアプリ画面" width="1672" height="941">
+            </picture>
             <div>
               <h3>見たい軸で確認</h3>
               <p>日付順、対象者順、誕生日や記念日の予定を切り替えられます。</p>

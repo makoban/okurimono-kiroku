@@ -404,6 +404,10 @@
       align-items: stretch;
     }
 
+    .mobile-screen-list {
+      display: none;
+    }
+
     .phone-shot {
       padding: 12px;
       background: var(--surface);
@@ -763,6 +767,43 @@
         aspect-ratio: auto;
       }
 
+      .desktop-screen-composite {
+        display: none;
+      }
+
+      .mobile-screen-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .mobile-screen-card {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .mobile-screen-card img {
+        width: min(100%, 320px);
+        margin: 0 auto;
+        border: 1px solid rgba(223, 210, 191, .9);
+        border-radius: 28px;
+        box-shadow: 0 14px 34px rgba(55, 42, 26, .16);
+      }
+
+      .mobile-screen-card h3 {
+        margin-top: 14px;
+        font-size: 18px;
+      }
+
+      .mobile-screen-card p {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
       section {
         padding: 42px 0;
       }
@@ -788,7 +829,7 @@
       }
 
       .phone-shot img {
-        width: min(100%, 250px);
+        width: min(100%, 320px);
       }
 
       .site-footer .section-inner {
@@ -865,10 +906,27 @@
             <a class="button secondary" href="#record">記録方法を見る</a>
           </div>
         </div>
-        <figure class="image-frame">
+        <figure class="image-frame desktop-screen-composite">
           <img src="assets/ui-screens.png" alt="贈答メモリーの記録一覧、人物履歴、カレンダー画面を並べた操作ガイド用スクリーンショット" width="1672" height="941">
           <figcaption>左から記録一覧、人物履歴、カレンダー。普段はこの3画面を切り替えて使います。</figcaption>
         </figure>
+        <div class="mobile-screen-list" aria-label="贈答メモリーの基本画面">
+          <article class="mobile-screen-card">
+            <img src="assets/manual-record.jpg" alt="記録一覧画面。検索、絞り込み、未返礼確認ができる" width="368" height="800">
+            <h3>記録一覧</h3>
+            <p>検索、絞り込み、並び替え、未返礼確認をここで行います。</p>
+          </article>
+          <article class="mobile-screen-card">
+            <img src="assets/manual-history.jpg" alt="人物履歴画面。相手ごとの贈答履歴を見返せる" width="368" height="800">
+            <h3>人物履歴</h3>
+            <p>相手ごとに頂き物と贈り品を時系列で確認します。</p>
+          </article>
+          <article class="mobile-screen-card">
+            <img src="assets/manual-calendar.jpg" alt="カレンダー画面。誕生日や予定を月表示で確認できる" width="368" height="800">
+            <h3>カレンダー</h3>
+            <p>誕生日、記念日、配送予定、返礼予定を月単位で確認します。</p>
+          </article>
+        </div>
       </div>
     </section>
 
