@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>贈答メモリー 使い方ガイド | iPhoneで贈答履歴を記録する操作マニュアル</title>
+  <meta name="description" content="贈答メモリーの使い方を、初回設定、頂き物の記録、贈り品の記録、返礼リンク、人物履歴、カレンダー通知、CSV保存まで順番に説明するiPhoneアプリ操作マニュアルです。">
+  <link rel="canonical" href="https://okurimono-kiroku.bantex.jp/manual.html">
+  <meta property="og:title" content="贈答メモリー 使い方ガイド">
+  <meta property="og:description" content="写真、相手、日付、金額目安、メモ、通知をiPhone内で残す贈答記録アプリの操作マニュアル。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://okurimono-kiroku.bantex.jp/manual.html">
+  <meta property="og:image" content="https://okurimono-kiroku.bantex.jp/assets/app-ui-mockup.webp">
+  <link rel="icon" href="assets/app-icon-premium.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1d221f;
+      --sub: #5f5a51;
+      --paper: #fff9ed;
+      --cream: #f6eee0;
+      --surface: #fffdf8;
+      --line: #dfd2bf;
+      --wine: #8b1e2d;
+      --wine-dark: #64111d;
+      --green: #146757;
+      --green-dark: #0c453c;
+      --gold: #bd8a2d;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(55, 42, 26, .14);
+      --radius: 8px;
+      --inner: min(1120px, calc(100% - 32px));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-break: strict;
+      letter-spacing: 0;
+      word-break: normal;
+      overflow-wrap: normal;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    @supports (overflow-x: clip) {
+      html,
+      body {
+        overflow-x: clip;
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    li,
+    summary,
+    .mini-card span,
+    .step-label,
+    .note {
+      word-break: auto-phrase;
+      overflow-wrap: normal;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: "Noto Serif JP", "Noto Sans JP", serif;
+      font-weight: 900;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    h3 {
+      line-height: 1.45;
+      text-wrap: balance;
+    }
+
+    p,
+    li {
+      color: var(--sub);
+      line-height: 1.85;
+      text-wrap: pretty;
+    }
+
+    .keep {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(223, 210, 191, .8);
+      background: rgba(255, 249, 237, .94);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: var(--inner);
+      min-height: 60px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgba(62, 47, 30, .12);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--sub);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 17px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      background: var(--wine);
+      color: var(--white);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 12px 24px rgba(139, 30, 45, .2);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--green-dark);
+      border-color: rgba(20, 103, 87, .28);
+      box-shadow: none;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #fff9ed 0%, #f3eadb 54%, #edf6ef 100%);
+    }
+
+    .hero-inner {
+      width: var(--inner);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: 36px;
+      align-items: center;
+      padding: 46px 0 48px;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 20px;
+      align-content: center;
+    }
+
+    .app-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+    }
+
+    .app-label img {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      box-shadow: 0 14px 30px rgba(62, 47, 30, .16);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid rgba(139, 30, 45, .18);
+      background: rgba(255, 255, 255, .78);
+      color: var(--wine);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    h1 {
+      max-width: 640px;
+      font-size: 50px;
+    }
+
+    .lead {
+      max-width: 610px;
+      color: #37433d;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .image-frame {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .image-frame img {
+      width: 100%;
+      background: #f8f1e7;
+      object-fit: contain;
+    }
+
+    .hero .image-frame img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .image-frame figcaption {
+      padding: 12px 14px 14px;
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-inner {
+      width: var(--inner);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 860px;
+      margin-bottom: 28px;
+    }
+
+    .section-title .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      max-width: 840px;
+      font-size: 38px;
+    }
+
+    .section-title p {
+      max-width: 760px;
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    .quick {
+      background: #151f1c;
+      color: var(--white);
+    }
+
+    .quick p,
+    .quick li {
+      color: rgba(255, 255, 255, .74);
+    }
+
+    .quick-grid,
+    .manual-grid,
+    .screen-grid,
+    .two-column,
+    .support-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quick-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .mini-card,
+    .manual-card,
+    .support-card,
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .9);
+    }
+
+    .quick .mini-card {
+      border-color: rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .mini-card {
+      min-height: 140px;
+      padding: 18px;
+    }
+
+    .mini-card b {
+      display: block;
+      margin-bottom: 12px;
+      color: #f3cd83;
+      font-family: "Noto Serif JP", serif;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .mini-card span {
+      display: block;
+      color: rgba(255, 255, 255, .75);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .manual-section {
+      background: var(--paper);
+    }
+
+    .manual-section.alt {
+      background: #f3f8f1;
+    }
+
+    .manual-grid {
+      grid-template-columns: .92fr 1.08fr;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .phone-shot {
+      padding: 12px;
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .phone-shot img {
+      width: min(100%, 230px);
+      margin: 0 auto;
+      border-radius: 28px;
+      border: 1px solid rgba(223, 210, 191, .9);
+      box-shadow: 0 14px 34px rgba(55, 42, 26, .16);
+    }
+
+    .phone-shot h3 {
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    .phone-shot p {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .manual-card {
+      padding: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .manual-card h3 {
+      font-size: 24px;
+    }
+
+    .manual-card p {
+      margin-top: 10px;
+    }
+
+    .manual-list {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: manual-step;
+    }
+
+    .manual-list li {
+      counter-increment: manual-step;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--ink);
+    }
+
+    .manual-list li::before {
+      content: counter(manual-step);
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--wine);
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .manual-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .manual-list span {
+      display: block;
+      color: var(--sub);
+      line-height: 1.75;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 5px solid var(--gold);
+      background: #fff5df;
+      color: #594b35;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .two-column {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .screen-grid {
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .screen-grid .image-frame img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+      color: var(--sub);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .dark-panel {
+      background: #141f1c;
+      color: var(--white);
+    }
+
+    .dark-panel p,
+    .dark-panel li {
+      color: rgba(255, 255, 255, .74);
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .support-card {
+      padding: 20px;
+      background: var(--surface);
+    }
+
+    .support-card h3 {
+      font-size: 18px;
+    }
+
+    .support-card p {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .faq {
+      background: var(--paper);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    details {
+      background: var(--surface);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 17px;
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    details p {
+      padding: 0 17px 17px;
+      font-size: 14px;
+    }
+
+    .final-cta {
+      padding: 58px 0;
+      background: var(--wine);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      margin: 0 auto;
+    }
+
+    .final-cta p {
+      max-width: 720px;
+      margin: 14px auto 0;
+      color: rgba(255, 255, 255, .84);
+    }
+
+    .final-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .final-cta .button {
+      background: var(--white);
+      color: var(--wine-dark);
+      box-shadow: none;
+    }
+
+    .final-cta .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .45);
+    }
+
+    .site-footer {
+      padding: 24px 0;
+      background: #111816;
+      color: rgba(255, 255, 255, .66);
+      font-size: 13px;
+    }
+
+    .site-footer .section-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav > *,
+    .hero-inner > *,
+    .section-inner > *,
+    .quick-grid > *,
+    .manual-grid > *,
+    .screen-grid > *,
+    .two-column > *,
+    .phone-row > *,
+    .support-grid > *,
+    .faq-grid > * {
+      min-width: 0;
+    }
+
+    @media (max-width: 920px) {
+      .nav-links a:not(.button) {
+        display: none;
+      }
+
+      .hero-inner,
+      .manual-grid,
+      .screen-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 33px;
+      }
+
+      .quick-grid,
+      .support-grid,
+      .faq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .manual-grid .image-frame {
+        max-width: 680px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      :root {
+        --inner: min(1120px, calc(100% - 24px));
+      }
+
+      .nav,
+      .hero-inner,
+      .section-inner {
+        width: calc(100% - 24px);
+        max-width: calc(100% - 24px);
+      }
+
+      .nav {
+        min-height: 56px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .brand span {
+        font-size: 15px;
+      }
+
+      .button {
+        min-height: 40px;
+        padding: 0 13px;
+        font-size: 13px;
+      }
+
+      .hero-inner {
+        display: block;
+        gap: 24px;
+        padding: 32px 0 36px;
+      }
+
+      .hero-copy {
+        margin-bottom: 24px;
+      }
+
+      .app-label img {
+        width: 56px;
+        height: 56px;
+      }
+
+      h1 {
+        font-size: 31px;
+        line-height: 1.28;
+      }
+
+      h2 {
+        font-size: 25px;
+        line-height: 1.34;
+      }
+
+      .lead,
+      .section-title p {
+        font-size: 15px;
+        line-height: 1.78;
+      }
+
+      p,
+      li,
+      h1,
+      h2,
+      h3,
+      summary,
+      .mini-card span,
+      .manual-list span,
+      .note {
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .keep {
+        white-space: normal;
+      }
+
+      .hero .image-frame img,
+      .screen-grid .image-frame img {
+        aspect-ratio: auto;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .quick-grid,
+      .two-column,
+      .phone-row,
+      .support-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .manual-card {
+        padding: 20px;
+      }
+
+      .manual-card h3 {
+        font-size: 21px;
+      }
+
+      .manual-list li {
+        grid-template-columns: 34px 1fr;
+      }
+
+      .phone-shot img {
+        width: min(100%, 250px);
+      }
+
+      .site-footer .section-inner {
+        display: grid;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "贈答メモリーの使い方",
+      "description": "iPhoneで頂き物と贈り品を写真、相手、日付、金額目安、メモ、通知つきで記録する操作手順。",
+      "image": "https://okurimono-kiroku.bantex.jp/assets/app-ui-mockup.webp",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "アプリを開いて記録を追加する",
+          "text": "記録タブの追加ボタンから、頂き物の記録または贈り品の記録を作成します。"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "写真と基本情報を入れる",
+          "text": "写真、相手、用途、品名、金額目安、日付、メモを入力します。"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "返礼や予定を管理する",
+          "text": "返礼の記録を頂き物に紐付け、カレンダーと通知で準備時期を確認します。"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="使い方ガイドの主要ナビゲーション">
+      <a class="brand" href="index.html" aria-label="贈答メモリートップページへ">
+        <img src="assets/app-icon-premium.png" alt="" width="34" height="34">
+        <span>贈答メモリー</span>
+      </a>
+      <div class="nav-links">
+        <a href="#start">最初の3分</a>
+        <a href="#record">記録する</a>
+        <a href="#history">履歴を見る</a>
+        <a href="#reminder">通知する</a>
+        <a class="button" href="index.html">製品LPへ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="app-label">
+            <img src="assets/app-icon-premium.png" alt="贈答メモリーのプレゼントボックス型アプリアイコン" width="64" height="64">
+            <span class="eyebrow">操作マニュアル</span>
+          </div>
+          <h1 id="hero-title"><span class="keep">贈答メモリー</span> <span class="keep">使い方ガイド。</span></h1>
+          <p class="lead">アプリを開いてから、頂き物を残す、贈り品の記録を入れる、返礼を紐付ける、誕生日や配送予定を通知するまでを、画面ごとに確認できます。</p>
+          <div class="hero-actions">
+            <a class="button" href="#start">最初の流れを見る</a>
+            <a class="button secondary" href="#record">記録方法を見る</a>
+          </div>
+        </div>
+        <figure class="image-frame">
+          <img src="assets/app-ui-mockup.webp" alt="贈答メモリーの記録一覧、人物履歴、カレンダー画面を並べた操作ガイド用スクリーンショット" width="1024" height="1024">
+          <figcaption>左から記録一覧、人物履歴、カレンダー。普段はこの3画面を切り替えて使います。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="start" class="quick" aria-labelledby="start-title">
+      <div class="section-inner">
+        <div class="section-title">
+          <span class="eyebrow">最初の3分</span>
+          <h2 id="start-title">まず覚える操作は4つだけです。</h2>
+          <p>最初から細かく入力しなくても使えます。受け取った直後や買った直後に、写真と相手だけ先に残しておくのが一番簡単です。</p>
+        </div>
+        <div class="quick-grid">
+          <article class="mini-card">
+            <b>01</b>
+            <strong>追加ボタンを押す</strong>
+            <span>記録タブ右上の追加ボタンから新しい記録を作ります。</span>
+          </article>
+          <article class="mini-card">
+            <b>02</b>
+            <strong>種別を選ぶ</strong>
+            <span>頂き物なら「頂き物」、自分が用意したものなら「贈り品」を選びます。</span>
+          </article>
+          <article class="mini-card">
+            <b>03</b>
+            <strong>写真と相手を入れる</strong>
+            <span>写真、名前、用途、品名、日付を入れて保存します。</span>
+          </article>
+          <article class="mini-card">
+            <b>04</b>
+            <strong>あとで見返す</strong>
+            <span>一覧、人物履歴、カレンダーから探します。</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="record" class="manual-section" aria-labelledby="record-title">
+      <div class="section-inner manual-grid">
+        <figure class="image-frame phone-shot">
+          <img src="assets/app-ui-mockup.webp" alt="贈答メモリーの記録一覧画面。検索、絞り込み、並び替え、未返礼件数が見える" width="1024" height="1024">
+          <figcaption>記録タブでは、検索、絞り込み、並び替え、未返礼確認を行います。</figcaption>
+        </figure>
+        <div class="manual-card">
+          <span class="eyebrow">記録を追加する</span>
+          <h2 id="record-title">頂き物も、贈り品も、同じ画面から登録します。</h2>
+          <p>写真があると後で思い出しやすくなります。包装、箱、カード、送り状、レシートなど、あとで確認したいものを一緒に撮っておきます。</p>
+          <ol class="manual-list">
+            <li>
+              <span><strong>記録タブ右上の追加ボタンを押す</strong>新規記録の編集画面が開きます。</span>
+            </li>
+            <li>
+              <span><strong>「頂き物」または「贈り品」を選ぶ</strong>頂き物は想定金額、自分が買ったものは購入金額として残せます。</span>
+            </li>
+            <li>
+              <span><strong>相手、用途、品名、日付を入力する</strong>用途は「誕生日祝い」「内祝い」「お歳暮」のように具体的に入れます。</span>
+            </li>
+            <li>
+              <span><strong>必要なら写真、配送予定日、メモを追加する</strong>好み、避けたい品物、購入店、次回候補もメモできます。</span>
+            </li>
+          </ol>
+          <p class="note">急いでいる時は、相手、用途、品名だけで保存して、金額やメモはあとから編集できます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="manual-section alt" aria-labelledby="type-title">
+      <div class="section-inner">
+        <div class="section-title">
+          <span class="eyebrow">入力の分け方</span>
+          <h2 id="type-title">「頂き物」と「贈り品」を分けると、返礼忘れを見つけやすくなります。</h2>
+          <p>同じ相手でも、頂き物の記録と自分が用意した贈り品の記録を別々に保存します。あとから人物履歴でまとめて見られます。</p>
+        </div>
+        <div class="two-column">
+          <article class="manual-card">
+            <h3>頂き物の記録</h3>
+            <p>相手から受け取った頂き物を保存します。金額が分からない時は、次回の返礼を考えるための目安として入力します。</p>
+            <ul class="check-list">
+              <li>頂き物を受け取った日を入れる</li>
+              <li>品名と用途を入れる</li>
+              <li>想定金額を入れる</li>
+              <li>返礼が必要なら未返礼として残す</li>
+            </ul>
+          </article>
+          <article class="manual-card">
+            <h3>贈り品の記録</h3>
+            <p>自分が用意した贈り品を保存します。配送予定日や渡す日がある場合は通知の基準になります。</p>
+            <ul class="check-list">
+              <li>買った日または渡す日を入れる</li>
+              <li>購入金額を入れる</li>
+              <li>配送予定日を入れる</li>
+              <li>頂き物への返礼なら元の記録に紐付ける</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="return" class="manual-section" aria-labelledby="return-title">
+      <div class="section-inner screen-grid">
+        <div class="manual-card">
+          <span class="eyebrow">返礼リンク</span>
+          <h2 id="return-title">返礼を登録する時は、元の頂き物に紐付けます。</h2>
+          <p>「どんな頂き物を受け取ったから、何を返礼したか」を残しておくと、翌年の金額感や品物選びが楽になります。</p>
+          <ol class="manual-list">
+            <li>
+              <span><strong>未返礼の記録を確認する</strong>記録一覧の未返礼表示から、まだ返礼がない頂き物を確認します。</span>
+            </li>
+            <li>
+              <span><strong>返礼の記録を追加する</strong>種別を「贈り品」にして、品名、金額、予定日を入力します。</span>
+            </li>
+            <li>
+              <span><strong>返礼リンクで元の記録を選ぶ</strong>対象の頂き物を選ぶと、人物履歴で関係が追いやすくなります。</span>
+            </li>
+          </ol>
+        </div>
+        <figure class="image-frame">
+          <img src="assets/app-ui-mockup.webp" alt="頂き物を写真付きで記録し、返礼候補を考える使用シーン" width="1024" height="1024">
+          <figcaption>頂き物を受け取った直後に写真と相手を残しておくと、あとから返礼を考えやすくなります。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="history" class="manual-section alt" aria-labelledby="history-title">
+      <div class="section-inner">
+        <div class="section-title">
+          <span class="eyebrow">探し方</span>
+          <h2 id="history-title">一覧、人物履歴、カレンダーを目的別に使い分けます。</h2>
+          <p>探したい内容によって見る画面を変えると、必要な記録に早くたどり着けます。</p>
+        </div>
+        <div class="phone-row">
+          <article class="phone-shot card">
+            <img src="assets/app-ui-mockup.webp" alt="記録一覧画面。日付順の贈答記録と未返礼件数を確認できる" width="1024" height="1024">
+            <h3>記録一覧</h3>
+            <p>最近の記録、未返礼、検索、頂き物/贈り品の絞り込みに使います。</p>
+          </article>
+          <article class="phone-shot card">
+            <img src="assets/app-ui-mockup.webp" alt="人物履歴画面。相手ごとに誕生日と記録件数が並ぶ" width="1024" height="1024">
+            <h3>人物履歴</h3>
+            <p>相手ごとに、頂き物と贈り品を時系列で確認します。</p>
+          </article>
+          <article class="phone-shot card">
+            <img src="assets/app-ui-mockup.webp" alt="カレンダー画面。誕生日、配送予定、返礼予定を月表示で確認できる" width="1024" height="1024">
+            <h3>カレンダー</h3>
+            <p>誕生日、記念日、配送予定、返礼予定を月単位で確認します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar" class="manual-section" aria-labelledby="calendar-title">
+      <div class="section-inner manual-grid">
+        <div class="manual-card">
+          <span class="eyebrow">誕生日・記念日</span>
+          <h2 id="calendar-title">カレンダーには、相手の誕生日と予定を登録します。</h2>
+          <p>贈り品は当日ではなく、少し前から準備が必要です。カレンダーに入れておくと、月の予定として確認できます。</p>
+          <ol class="manual-list">
+            <li>
+              <span><strong>カレンダータブを開く</strong>月表示で、誕生日、記念日、配送予定、返礼予定が並びます。</span>
+            </li>
+            <li>
+              <span><strong>右上の追加ボタンで予定を入れる</strong>誕生日、記念日、その他の予定を登録します。</span>
+            </li>
+            <li>
+              <span><strong>相手を選んで保存する</strong>人物履歴と予定がつながり、あとから見返しやすくなります。</span>
+            </li>
+          </ol>
+        </div>
+        <figure class="image-frame phone-shot">
+          <img src="assets/app-ui-mockup.webp" alt="贈答メモリーのカレンダー画面。月表示で誕生日、配送予定、返礼予定が並んでいる" width="1024" height="1024">
+          <figcaption>月表示で、次に準備する予定をまとめて確認できます。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="reminder" class="manual-section alt" aria-labelledby="reminder-title">
+      <div class="section-inner screen-grid">
+        <figure class="image-frame">
+          <img src="assets/app-ui-mockup.webp" alt="贈答メモリーのリマインダー通知機能を説明する画像" width="1024" height="1024">
+          <figcaption>リマインダー通知は、用意する日を忘れないためのPRO機能です。</figcaption>
+        </figure>
+        <div class="manual-card">
+          <span class="eyebrow">通知</span>
+          <h2 id="reminder-title">通知を使う時は、設定画面で許可してから再登録します。</h2>
+          <p>通知は、配送予定日、渡す日、誕生日、記念日などを基準に出します。初期値は2週間前に設定できます。</p>
+          <ol class="manual-list">
+            <li>
+              <span><strong>設定タブを開く</strong>PRO機能が有効な状態で、通知設定を確認します。</span>
+            </li>
+            <li>
+              <span><strong>初期通知のタイミングを選ぶ</strong>当日、前日、3日前、1週間前、2週間前などから選べます。</span>
+            </li>
+            <li>
+              <span><strong>通知を許可して再登録する</strong>保存済みの記録と予定に対して、通知を登録し直します。</span>
+            </li>
+          </ol>
+          <p class="note">通知が不要な記録は、リマインダーを「通知なし」にして保存します。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="dark-panel" aria-labelledby="settings-title">
+      <div class="section-inner">
+        <div class="section-title">
+          <span class="eyebrow">設定と保存</span>
+          <h2 id="settings-title">端末内保存を前提に、必要な時だけ書き出します。</h2>
+          <p>記録、写真、連絡先ID、通知設定はiPhone内で扱う前提です。一覧保存は、本人が操作した時だけCSVとして共有できます。</p>
+        </div>
+        <div class="support-grid">
+          <article class="support-card">
+            <h3>PRO切替</h3>
+            <p>現在の開発確認版では、設定画面のトグルでPRO機能を確認できます。正式版では課金接続に置き換える想定です。</p>
+          </article>
+          <article class="support-card">
+            <h3>CSV保存</h3>
+            <p>現在の検索や絞り込み結果をCSVで保存し、Files、AirDrop、メールなどへ共有できます。</p>
+          </article>
+          <article class="support-card">
+            <h3>端末内管理</h3>
+            <p>写真付きの贈答履歴を、サーバー同期前提にせず手元のiPhoneで管理します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="section-inner">
+        <div class="section-title">
+          <span class="eyebrow">困った時</span>
+          <h2 id="faq-title">迷いやすい操作を先に確認できます。</h2>
+        </div>
+        <div class="faq-grid">
+          <details open>
+            <summary>金額が分からない頂き物はどう入力しますか？</summary>
+            <p>正確な金額ではなく、次回の返礼を考えるための想定金額として入力します。分からない場合は未入力のままでも記録できます。</p>
+          </details>
+          <details>
+            <summary>相手を連絡先から選ばなくても使えますか？</summary>
+            <p>使えます。連絡先連携は任意です。名前を手入力するだけでも人物履歴として整理できます。</p>
+          </details>
+          <details>
+            <summary>写真は必ず必要ですか？</summary>
+            <p>必須ではありません。ただし、包装や品物の雰囲気を残せるので、あとから見返す時に便利です。</p>
+          </details>
+          <details>
+            <summary>返礼済みかどうかはどこで見ますか？</summary>
+            <p>記録一覧の未返礼表示を確認します。返礼の記録を元の頂き物に紐付けると、未返礼から外れます。</p>
+          </details>
+          <details>
+            <summary>通知が出ない時は何を確認しますか？</summary>
+            <p>設定タブでPRO機能、初期通知、通知許可を確認し、保存済みの予定を再登録します。通知なしで保存した記録には通知は出ません。</p>
+          </details>
+          <details>
+            <summary>取引先や仕事の手土産にも使えますか？</summary>
+            <p>使えます。相手ごとの金額感、好み、避けたい品物、過去に渡した贈り品の履歴を残す用途に向いています。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-title">
+      <div class="section-inner">
+        <h2 id="final-title"><span class="keep">迷ったら、</span><span class="keep">写真と相手だけ先に残す。</span></h2>
+        <p>贈答メモリーは、あとから整えられる台帳です。まずは記録を残し、必要な時に履歴、返礼、通知、CSV保存へ広げていきます。</p>
+        <div class="final-actions">
+          <a class="button" href="#top">上からもう一度見る</a>
+          <a class="button secondary" href="index.html">製品LPへ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner">
+      <span>贈答メモリー 使い方ガイド</span>
+      <span>iPhoneだけで贈答履歴を管理する操作マニュアル</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>贈り物記録 | 頂き物と贈り物をiPhoneだけで記録するアプリ</title>
-  <meta name="description" content="贈り物記録は、頂き物や贈り物を写真、金額目安、日付、相手、メモ、リマインダーと一緒に端末内で記録するiPhoneアプリです。人物別の履歴、誕生日や記念日の通知、返礼忘れ防止をiPhone内で管理します。">
+  <title>贈答メモリー | 頂き物と贈り品をiPhoneだけで記録するアプリ</title>
+  <meta name="description" content="贈答メモリーは、頂き物や贈り品を写真、金額目安、日付、相手、メモ、リマインダーと一緒に端末内で記録するiPhoneアプリです。人物別の履歴、誕生日や記念日の通知、返礼忘れ防止をiPhone内で管理します。">
   <link rel="canonical" href="https://okurimono-kiroku.bantex.jp/">
-  <meta property="og:title" content="贈り物記録 | 頂き物と贈り物をiPhoneだけで記録するアプリ">
+  <meta property="og:title" content="贈答メモリー | 頂き物と贈り品をiPhoneだけで記録するアプリ">
   <meta property="og:description" content="写真、相手、日付、金額目安、メモ、リマインダーをiPhone内でまとめて残す贈答記録アプリ。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://okurimono-kiroku.bantex.jp/">
-  <meta property="og:image" content="https://okurimono-kiroku.bantex.jp/assets/hero-flyer.png">
+  <meta property="og:image" content="https://okurimono-kiroku.bantex.jp/assets/app-ui-mockup.webp">
   <link rel="icon" href="assets/app-icon-premium.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@
       letter-spacing: 0;
       line-break: strict;
       word-break: normal;
-      overflow-wrap: break-word;
+      overflow-wrap: normal;
       max-width: 100%;
       overflow-x: hidden;
     }
@@ -85,6 +85,21 @@
       line-height: 1.2;
       letter-spacing: 0;
       text-wrap: balance;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    summary,
+    li,
+    figcaption,
+    .hero-point span,
+    .notice-item strong,
+    .privacy-point strong,
+    .price {
+      word-break: auto-phrase;
+      overflow-wrap: normal;
     }
 
     h1, h2 {
@@ -165,6 +180,11 @@
       box-shadow: none;
     }
 
+    .keep {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
     .hero {
       padding: 0;
       border-bottom: 1px solid var(--line);
@@ -217,7 +237,7 @@
 
     h1 {
       max-width: 560px;
-      font-size: 52px;
+      font-size: 50px;
     }
 
     .lead {
@@ -316,7 +336,7 @@
 
     h2 {
       max-width: 820px;
-      font-size: 40px;
+      font-size: 38px;
     }
 
     .section-title p {
@@ -715,11 +735,11 @@
       }
 
       h1 {
-        font-size: 44px;
+        font-size: 42px;
       }
 
       h2 {
-        font-size: 34px;
+        font-size: 33px;
       }
 
       .problem-grid,
@@ -768,7 +788,8 @@
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 30px;
+        line-height: 1.28;
       }
 
       .lead {
@@ -785,7 +806,8 @@
       }
 
       h2 {
-        font-size: 27px;
+        font-size: 25px;
+        line-height: 1.34;
       }
 
       .section-title p {
@@ -822,18 +844,29 @@
         display: grid;
       }
     }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="主要ナビゲーション">
-      <a class="brand" href="#top" aria-label="贈り物記録トップへ">
+      <a class="brand" href="#top" aria-label="贈答メモリートップへ">
         <img src="assets/app-icon-premium.png" alt="" width="34" height="34">
-        <span>贈り物記録</span>
+        <span>贈答メモリー</span>
       </a>
       <div class="nav-links">
         <a href="#features">できること</a>
         <a href="#concept">画面</a>
+        <a href="manual.html">使い方</a>
         <a href="#reminders">通知</a>
         <a class="button" href="#pricing">価格を見る</a>
       </div>
@@ -845,23 +878,23 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <div class="app-label">
-            <img src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="64" height="64">
+            <img src="assets/app-icon-premium.png" alt="贈答メモリーのプレゼントボックス型アプリアイコン" width="64" height="64">
             <span class="eyebrow">iPhone贈答記録アプリ</span>
           </div>
-          <h1 id="hero-title">贈り物を、忘れない。大切な日を、ちゃんと贈れる。</h1>
-          <p class="lead">写真、品名、金額目安、日付、相手、メモ、準備通知をまとめて記録。お中元、お歳暮、誕生日、記念日、内祝い、手土産まで、iPhoneだけで整理できます。</p>
+          <h1 id="hero-title"><span class="keep">贈答メモリー</span><span class="keep">贈り品も、頂き物も、</span><span class="keep">ちゃんと残せる。</span></h1>
+          <p class="lead">写真、品名、金額目安、日付、相手、メモ、<span class="keep">準備通知</span>をまとめて記録。お中元、お歳暮、誕生日、記念日、内祝い、手土産まで、<span class="keep">iPhoneだけで</span>整理できます。</p>
           <div class="hero-actions">
             <a class="button" href="#concept">画面を見る</a>
-            <a class="button secondary" href="#features">機能を見る</a>
+            <a class="button secondary" href="manual.html">使い方を見る</a>
           </div>
-          <div class="hero-points" aria-label="贈り物記録の主な特徴">
+          <div class="hero-points" aria-label="贈答メモリーの主な特徴">
             <div class="hero-point">
               <strong>写真で残す</strong>
               <span>箱、熨斗、カード、レシート、送り状まで記録。</span>
             </div>
             <div class="hero-point">
               <strong>人ごとに見る</strong>
-              <span>送った履歴と、もらった履歴を一緒に確認。</span>
+              <span>贈り品の履歴と、頂き物の履歴を一緒に確認。</span>
             </div>
             <div class="hero-point">
               <strong>通知で防ぐ</strong>
@@ -870,8 +903,8 @@
           </div>
         </div>
         <figure class="image-card">
-          <img src="assets/hero-flyer.png" alt="贈り物記録の利用シーンとキャッチコピーを入れたメインビジュアル" width="1672" height="941">
-          <figcaption>写真・相手・日付・リマインダーを端末内で記録する、贈り物記録のメインビジュアル。</figcaption>
+          <img src="assets/app-ui-mockup.webp" alt="贈答メモリーのアプリ画面イメージ" width="1024" height="1024">
+          <figcaption>写真・相手・日付・<span class="keep">リマインダー</span>を端末内で記録する、贈答メモリーの画面イメージ。</figcaption>
         </figure>
       </div>
     </section>
@@ -880,19 +913,19 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">よくある困りごと</span>
-          <h2 id="problem-title">贈り物の失敗は、記憶だけで管理している時に起きます。</h2>
-          <p>もらった品物、だいたいの金額、返礼済みかどうか、次の誕生日やお歳暮の予定。大事なのに、紙のメモや写真フォルダ、LINE履歴に散らばりがちです。</p>
+          <h2 id="problem-title">贈り品と頂き物の管理は、記憶だけだと抜けやすい。</h2>
+          <p>頂き物の品名、だいたいの金額、返礼済みかどうか、次の誕生日やお歳暮の予定。大事なのに、紙のメモや<span class="keep">写真フォルダ</span>、<span class="keep">LINE履歴</span>に散らばりがちです。</p>
         </div>
         <div class="problem-grid">
           <article class="problem-card card">
             <b>01</b>
-            <h3>去年何を送ったか思い出せない</h3>
-            <p>同じものを続けて送ったり、金額感がずれたりしやすくなります。</p>
+            <h3>去年の贈り品を思い出せない</h3>
+            <p>同じ贈り品を続けたり、金額感がずれたりしやすくなります。</p>
           </article>
           <article class="problem-card card">
             <b>02</b>
-            <h3>お返しのタイミングを逃す</h3>
-            <p>頂いた直後は覚えていても、忙しいと準備が後回しになります。</p>
+            <h3>返礼のタイミングを逃す</h3>
+            <p>頂き物を受け取った直後は覚えていても、忙しいと準備が後回しになります。</p>
           </article>
           <article class="problem-card card">
             <b>03</b>
@@ -911,13 +944,13 @@
     <section id="features" class="feature-section" aria-labelledby="features-title">
       <div class="section-inner feature-layout">
         <figure class="image-card">
-          <img src="assets/usage-recording.png" alt="家族の誕生日後に頂き物を写真、相手、日付、金額目安付きで記録する使用シーン" width="1448" height="1086">
+          <img src="assets/app-ui-mockup.webp" alt="頂き物と贈り品を写真付きで残す贈答メモリーの画面イメージ" width="1024" height="1024">
         </figure>
         <div>
           <div class="section-title">
             <span class="eyebrow">できること</span>
-            <h2 id="features-title">写真を撮って、相手を選んで、次にやることまで残せます。</h2>
-            <p>頂き物と贈り物の両方を同じ形式で記録。あとから日付順、相手順、未返礼、予定ありで探せる設計です。</p>
+            <h2 id="features-title"><span class="keep">写真を撮って、</span><span class="keep">相手を選んで、</span><span class="keep">次にやることまで</span><span class="keep">残せます。</span></h2>
+            <p>頂き物と贈り品の両方を同じ形式で記録。あとから日付順、相手順、未返礼、予定ありで探せる設計です。</p>
           </div>
           <div class="feature-grid">
             <article class="feature-card card">
@@ -933,12 +966,12 @@
             <article class="feature-card card">
               <span class="icon">¥</span>
               <h3>金額目安を保存</h3>
-              <p>頂き物は想定金額、贈り物は購入金額を残せます。</p>
+              <p>頂き物は想定金額、贈り品は購入金額を残せます。</p>
             </article>
             <article class="feature-card card">
               <span class="icon">歴</span>
               <h3>返礼履歴を確認</h3>
-              <p>頂いた記録とお返しの記録を結び付けて追えます。</p>
+              <p>頂き物の記録と返礼の記録を<span class="keep">結び付けて</span>追えます。</p>
             </article>
           </div>
         </div>
@@ -949,8 +982,8 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">使い方</span>
-          <h2 id="workflow-title">買った時、もらった時、その場で30秒。</h2>
-          <p>贈り物は配送日や渡す日が決まった時点で記録できます。頂き物は写真と相手だけ先に残し、金額目安やメモはあとから追記できます。</p>
+          <h2 id="workflow-title"><span class="keep">贈り品も、</span><span class="keep">頂き物も、</span><span class="keep">その場で30秒。</span></h2>
+          <p>贈り品は配送日や渡す日が決まった時点で記録できます。頂き物は写真と相手だけ先に残し、金額目安やメモはあとから追記できます。</p>
         </div>
         <div class="workflow-grid">
           <article class="workflow-card card">
@@ -981,11 +1014,11 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">画面イメージ</span>
-          <h2 id="screens-title">一覧、人物履歴、カレンダーをひとつのアプリに。</h2>
+          <h2 id="screens-title"><span class="keep">一覧、人物履歴、</span><span class="keep">カレンダーを</span><span class="keep">ひとつのアプリに。</span></h2>
           <p>日付順の一覧、相手ごとの贈答履歴、誕生日や記念日のカレンダーを切り替えて確認できます。</p>
         </div>
         <figure class="image-card screen-showcase">
-          <img src="assets/ui-screens.png" alt="日付順一覧、人物別履歴、記念日カレンダーを並べた贈り物記録のUI画面イメージ" width="1672" height="941">
+          <img src="assets/app-ui-mockup.webp" alt="日付順一覧や人物別履歴を扱う贈答メモリーの画面イメージ" width="1024" height="1024">
         </figure>
       </div>
     </section>
@@ -994,28 +1027,28 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">使用シーン</span>
-          <h2 id="scenes-title">家族にも、親戚にも、取引先にも使える贈答メモ。</h2>
+          <h2 id="scenes-title"><span class="keep">家族にも、</span><span class="keep">親戚にも、</span><span class="keep">取引先にも使える</span><span class="keep">贈答メモ。</span></h2>
           <p>日本の贈答は、時期、相手、金額感、返礼の有無が大切です。生活の中で発生する小さな記録を一冊にまとめます。</p>
         </div>
         <div class="gallery-grid">
           <article class="gallery-card standard card">
-            <img src="assets/usage-recording.png" alt="家族の贈り物を受け取った後に写真付きで記録する使用シーン" width="1448" height="1086">
+            <img src="assets/app-ui-mockup.webp" alt="頂き物を受け取った後に写真付きで記録する画面イメージ" width="1024" height="1024">
             <div>
-              <h3>もらった直後に記録</h3>
+              <h3>頂き物を受け取った直後に記録</h3>
               <p>写真、相手、日付、金額目安をその場で保存。返礼候補やメモも追記できます。</p>
             </div>
           </article>
           <article class="gallery-card wide card">
-            <img src="assets/ui-screens.png" alt="連絡先や記念日と贈答履歴を結び付けて管理するアプリ画面" width="1672" height="941">
+            <img src="assets/app-ui-mockup.webp" alt="連絡先や記念日と贈答履歴を結び付けて管理する画面イメージ" width="1024" height="1024">
             <div>
               <h3>見たい軸で確認</h3>
               <p>日付順、対象者順、誕生日や記念日の予定を切り替えられます。</p>
             </div>
           </article>
           <article class="gallery-card tall card">
-            <img src="assets/reminder-flyer.png" alt="2週間前の通知と初期PRO価格300円を訴求する贈り物記録のチラシ風ビジュアル" width="1122" height="1402">
+            <img src="assets/app-ui-mockup.webp" alt="返礼忘れを防ぐための通知管理画面イメージ" width="1024" height="1024">
             <div>
-              <h3>お返し忘れを防ぐ</h3>
+              <h3>返礼忘れを防ぐ</h3>
               <p>必要なタイミングで「用意しましたか？」を通知します。</p>
             </div>
           </article>
@@ -1028,8 +1061,8 @@
         <div>
           <div class="section-title">
             <span class="eyebrow">通知設計</span>
-            <h2 id="reminders-title">「用意しましたか？」を、ちょうど良い時期に。</h2>
-            <p>買う前、買った後、届ける前、誕生日の前で必要なリマインダーは違います。予定の種類ごとに通知タイミングを変えられる設計です。</p>
+            <h2 id="reminders-title"><span class="keep">「用意しましたか？」を、</span><span class="keep">ちょうど良い時期に。</span></h2>
+            <p>買う前、買った後、届ける前、誕生日の前で必要な<span class="keep">リマインダー</span>は違います。予定の種類ごとに<span class="keep">通知タイミング</span>を変えられる設計です。</p>
           </div>
           <div class="notice-list">
             <article class="notice-item">
@@ -1047,7 +1080,7 @@
           </div>
         </div>
         <figure class="image-card">
-          <img src="assets/reminder-flyer.png" alt="大切な日をちゃんと贈れることを伝える通知機能とPRO価格のプロモーション画像" width="1122" height="1402">
+          <img src="assets/app-ui-mockup.webp" alt="贈り品と頂き物の通知管理をイメージしたアプリ画面" width="1024" height="1024">
         </figure>
       </div>
     </section>
@@ -1056,12 +1089,12 @@
       <div class="section-inner privacy-layout">
         <div>
           <span class="eyebrow">プライバシー</span>
-          <h2 id="privacy-title">人間関係の記録だから、基本は端末内。</h2>
-          <p>贈答履歴には、相手の名前、金額感、家族行事などが含まれます。外部サーバーに送らず、iPhone内で管理する前提のアプリとして設計します。</p>
+          <h2 id="privacy-title"><span class="keep">人間関係の記録だから、</span><span class="keep">基本は端末内。</span></h2>
+          <p>贈答履歴には、相手の名前、金額感、家族行事などが含まれます。外部サーバーに送らず、<span class="keep">iPhone内</span>で管理する前提の<span class="keep">アプリとして</span>設計します。</p>
           <div class="privacy-points">
             <div class="privacy-point">
               <strong>画像も記録もアプリ内保存</strong>
-              <p>写真付きの贈答履歴を、必要な時にだけ見返せます。</p>
+              <p>写真付きの贈答履歴を、<span class="keep">必要な時にだけ</span>見返せます。</p>
             </div>
             <div class="privacy-point">
               <strong>連絡先は許可した時だけ</strong>
@@ -1074,7 +1107,7 @@
           </div>
         </div>
         <figure class="image-card screen-showcase">
-          <img src="assets/ui-screens.png" alt="端末内で連絡先、贈答履歴、記念日カレンダーを扱う贈り物記録の画面イメージ" width="1672" height="941">
+          <img src="assets/app-ui-mockup.webp" alt="端末内で贈答履歴を扱う贈答メモリーの画面イメージ" width="1024" height="1024">
         </figure>
       </div>
     </section>
@@ -1083,8 +1116,8 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">提供案</span>
-          <h2 id="pricing-title">まず無料で試せて、必要な人だけPROに。</h2>
-          <p>毎日使うアプリではなく、必要な時に確実に役立つ台帳アプリです。通常2,000円のPRO版を、初期バージョン限定で300円にする想定です。</p>
+          <h2 id="pricing-title"><span class="keep">まず無料で試せて、</span><span class="keep">必要な人だけPROに。</span></h2>
+          <p>毎日使うアプリではなく、必要な時に確実に役立つ台帳アプリです。通常<span class="keep">2,000円</span>の<span class="keep">PRO版</span>を、<span class="keep">初期バージョン限定</span>で<span class="keep">300円</span>にする想定です。</p>
         </div>
         <div class="pricing-grid">
           <article class="plan card">
@@ -1097,10 +1130,10 @@
             </ul>
           </article>
           <article class="plan recommended card">
-            <img class="plan-icon" src="assets/app-icon-premium.png" alt="贈り物記録のプレゼントボックス型アプリアイコン" width="58" height="58">
+            <img class="plan-icon" src="assets/app-icon-premium.png" alt="贈答メモリーのプレゼントボックス型アプリアイコン" width="58" height="58">
             <h3>PRO版</h3>
             <div class="price">初期価格300円</div>
-            <p class="plan-note">通常価格2,000円。初期バージョン限定価格です。</p>
+            <p class="plan-note">通常価格<span class="keep">2,000円</span>。<span class="keep">初期バージョン限定価格</span>です。</p>
             <ul>
               <li>リマインダー通知機能</li>
               <li>一覧保存機能</li>
@@ -1118,12 +1151,12 @@
         </div>
         <div class="faq-grid">
           <details open>
-            <summary>贈り物記録は家計簿ですか？</summary>
-            <p>家計簿ではありません。誰から何を頂いたか、誰に何を贈ったか、返礼や次回の予定を人ごとに残す贈答管理アプリです。</p>
+            <summary>贈答メモリーは家計簿ですか？</summary>
+            <p>家計簿ではありません。どんな頂き物を受け取ったか、どんな贈り品を渡したか、返礼や次回の予定を人ごとに残す贈答管理アプリです。</p>
           </details>
           <details>
             <summary>頂き物の金額が分からない場合は？</summary>
-            <p>想定金額として目安を入れる設計です。次回の贈り物の金額感を合わせることを重視します。</p>
+            <p>想定金額として目安を入れる設計です。次回の贈り品の金額感を合わせることを重視します。</p>
           </details>
           <details>
             <summary>連絡先を使わなくても登録できますか？</summary>
@@ -1147,8 +1180,8 @@
 
     <section class="final-cta" aria-labelledby="final-title">
       <div class="section-inner">
-        <h2 id="final-title">贈り物の記憶を、失礼のない準備に変える。</h2>
-        <p>贈り物記録は、頂き物と贈り物を写真付きで残し、人ごとの履歴と通知で次の行動につなげるiPhoneアプリです。</p>
+        <h2 id="final-title"><span class="keep">贈り品と頂き物の記憶を、</span><span class="keep">失礼のない準備に変える。</span></h2>
+        <p>贈答メモリーは、頂き物と贈り品を写真付きで残し、人ごとの履歴と通知で<span class="keep">次の行動につなげる</span><span class="keep">iPhoneアプリ</span>です。</p>
         <a class="button" href="#top">ページ上部へ戻る</a>
       </div>
     </section>
@@ -1156,7 +1189,7 @@
 
   <footer class="site-footer">
     <div class="section-inner">
-      <span>贈り物記録 LP concept</span>
+      <span>贈答メモリー LP concept</span>
       <span>端末内保存を前提にしたiPhone贈答記録アプリ</span>
     </div>
   </footer>
