@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>贈答メモリー 使い方ガイド | iPhoneで贈答履歴を記録する操作マニュアル</title>
-  <meta name="description" content="贈答メモリーの使い方を、初回設定、頂き物の記録、贈り品の記録、返礼リンク、人物履歴、カレンダー通知、CSV保存まで順番に説明するiPhoneアプリ操作マニュアルです。">
+  <meta name="description" content="贈答メモリーの使い方を、初回設定、頂き物の記録、贈り品の記録、返礼リンク、人タブ、カレンダー通知、CSV保存まで順番に説明するiPhoneアプリ操作マニュアルです。">
   <link rel="canonical" href="https://okurimono-kiroku.bantex.jp/manual.html">
   <meta property="og:title" content="贈答メモリー 使い方ガイド">
-  <meta property="og:description" content="写真、相手、日付、金額目安、メモ、通知をiPhone内で残す贈答記録アプリの操作マニュアル。">
+  <meta property="og:description" content="写真、お相手、日付、金額目安、メモ、通知をiPhone内で残す贈答記録アプリの操作マニュアル。">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://okurimono-kiroku.bantex.jp/manual.html">
   <meta property="og:image" content="https://okurimono-kiroku.bantex.jp/assets/ui-screens.png">
@@ -32,7 +32,7 @@
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(55, 42, 26, .14);
       --radius: 8px;
-      --inner: min(1280px, calc(100% - 32px));
+      --inner: min(1400px, calc(100% - 32px));
     }
 
     * {
@@ -415,7 +415,7 @@
     }
 
     .phone-shot img {
-      width: min(100%, 320px);
+      width: min(100%, 340px);
       margin: 0 auto;
       border-radius: 28px;
       border: 1px solid rgba(223, 210, 191, .9);
@@ -755,7 +755,7 @@
       .manual-list span,
       .note {
         word-break: normal;
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
       }
 
       .keep {
@@ -786,7 +786,7 @@
       }
 
       .mobile-screen-card img {
-        width: min(100%, 320px);
+        width: min(100%, 360px);
         margin: 0 auto;
         border: 1px solid rgba(223, 210, 191, .9);
         border-radius: 28px;
@@ -829,7 +829,7 @@
       }
 
       .phone-shot img {
-        width: min(100%, 320px);
+        width: min(100%, 360px);
       }
 
       .site-footer .section-inner {
@@ -852,18 +852,18 @@
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "贈答メモリーの使い方",
-      "description": "iPhoneで頂き物と贈り品を写真、相手、日付、金額目安、メモ、通知つきで記録する操作手順。",
+      "description": "iPhoneで頂き物と贈り品を写真、お相手、日付、金額目安、メモ、通知つきで記録する操作手順。",
       "image": "https://okurimono-kiroku.bantex.jp/assets/ui-screens.png",
       "step": [
         {
           "@type": "HowToStep",
           "name": "アプリを開いて記録を追加する",
-          "text": "記録タブの追加ボタンから、頂き物の記録または贈り品の記録を作成します。"
+          "text": "一覧タブの追加ボタンから、頂き物の記録または贈り品の記録を作成します。"
         },
         {
           "@type": "HowToStep",
           "name": "写真と基本情報を入れる",
-          "text": "写真、相手、用途、品名、金額目安、日付、メモを入力します。"
+          "text": "写真、お相手、用途、品名、金額目安、日付、メモを入力します。"
         },
         {
           "@type": "HowToStep",
@@ -907,19 +907,19 @@
           </div>
         </div>
         <figure class="image-frame desktop-screen-composite">
-          <img src="assets/ui-screens.png" alt="贈答メモリーの記録一覧、人物履歴、カレンダー画面を並べた操作ガイド用スクリーンショット" width="1672" height="941">
-          <figcaption>左から記録一覧、人物履歴、カレンダー。普段はこの3画面を切り替えて使います。</figcaption>
+          <img src="assets/ui-screens.png" alt="贈答メモリーの一覧、人、カレンダー画面を並べた操作ガイド用スクリーンショット" width="1672" height="941">
+          <figcaption>左から一覧、人、カレンダー。普段はこの3画面を切り替えて使います。</figcaption>
         </figure>
         <div class="mobile-screen-list" aria-label="贈答メモリーの基本画面">
           <article class="mobile-screen-card">
-            <img src="assets/manual-record.jpg" alt="記録一覧画面。検索、絞り込み、未返礼確認ができる" width="368" height="800">
-            <h3>記録一覧</h3>
+            <img src="assets/manual-record.jpg" alt="一覧画面。検索、絞り込み、未返礼確認ができる" width="368" height="800">
+            <h3>一覧</h3>
             <p>検索、絞り込み、並び替え、未返礼確認をここで行います。</p>
           </article>
           <article class="mobile-screen-card">
-            <img src="assets/manual-history.jpg" alt="人物履歴画面。相手ごとの贈答履歴を見返せる" width="368" height="800">
-            <h3>人物履歴</h3>
-            <p>相手ごとに頂き物と贈り品を時系列で確認します。</p>
+            <img src="assets/manual-history.jpg" alt="人画面。お相手ごとの贈答履歴を見返せる" width="368" height="800">
+            <h3>人</h3>
+            <p>お相手ごとに頂き物と贈り品を時系列で確認します。</p>
           </article>
           <article class="mobile-screen-card">
             <img src="assets/manual-calendar.jpg" alt="カレンダー画面。誕生日や予定を月表示で確認できる" width="368" height="800">
@@ -935,13 +935,13 @@
         <div class="section-title">
           <span class="eyebrow">最初の3分</span>
           <h2 id="start-title">まず覚える操作は4つだけです。</h2>
-          <p>最初から細かく入力しなくても使えます。受け取った直後や買った直後に、写真と相手だけ先に残しておくのが一番簡単です。</p>
+          <p>最初から細かく入力しなくても使えます。受け取った直後や買った直後に、写真とお相手だけ先に残しておくのが一番簡単です。</p>
         </div>
         <div class="quick-grid">
           <article class="mini-card">
             <b>01</b>
             <strong>追加ボタンを押す</strong>
-            <span>記録タブ右上の追加ボタンから新しい記録を作ります。</span>
+            <span>一覧タブ右上の追加ボタンから新しい記録を作ります。</span>
           </article>
           <article class="mini-card">
             <b>02</b>
@@ -950,13 +950,13 @@
           </article>
           <article class="mini-card">
             <b>03</b>
-            <strong>写真と相手を入れる</strong>
-            <span>写真、名前、用途、品名、日付を入れて保存します。</span>
+            <strong>写真とお相手を入れる</strong>
+            <span>写真、お相手、用途、品名、日付を入れて保存します。</span>
           </article>
           <article class="mini-card">
             <b>04</b>
             <strong>あとで見返す</strong>
-            <span>一覧、人物履歴、カレンダーから探します。</span>
+            <span>一覧、人、カレンダーから探します。</span>
           </article>
         </div>
       </div>
@@ -965,8 +965,8 @@
     <section id="record" class="manual-section" aria-labelledby="record-title">
       <div class="section-inner manual-grid">
         <figure class="image-frame phone-shot">
-          <img src="assets/manual-record.jpg" alt="贈答メモリーの記録一覧画面。検索、絞り込み、並び替え、未返礼件数が見える" width="368" height="800">
-          <figcaption>記録タブでは、検索、絞り込み、並び替え、未返礼確認を行います。</figcaption>
+          <img src="assets/manual-record.jpg" alt="贈答メモリーの一覧画面。検索、絞り込み、並び替え、未返礼件数が見える" width="368" height="800">
+          <figcaption>一覧タブでは、検索、絞り込み、並び替え、未返礼確認を行います。</figcaption>
         </figure>
         <div class="manual-card">
           <span class="eyebrow">記録を追加する</span>
@@ -974,19 +974,19 @@
           <p>写真があると後で思い出しやすくなります。包装、箱、カード、送り状、レシートなど、あとで確認したいものを一緒に撮っておきます。</p>
           <ol class="manual-list">
             <li>
-              <span><strong>記録タブ右上の追加ボタンを押す</strong>新規記録の編集画面が開きます。</span>
+              <span><strong>一覧タブ右上の追加ボタンを押す</strong>新規記録の編集画面が開きます。</span>
             </li>
             <li>
               <span><strong>「頂き物」または「贈り品」を選ぶ</strong>頂き物は想定金額、自分が買ったものは購入金額として残せます。</span>
             </li>
             <li>
-              <span><strong>相手、用途、品名、日付を入力する</strong>用途は「誕生日祝い」「内祝い」「お歳暮」のように具体的に入れます。</span>
+              <span><strong>お相手、用途、品名、日付を入力する</strong>用途は「誕生日祝い」「内祝い」「お歳暮」のように具体的に入れます。</span>
             </li>
             <li>
               <span><strong>必要なら写真、配送予定日、メモを追加する</strong>好み、避けたい品物、購入店、次回候補もメモできます。</span>
             </li>
           </ol>
-          <p class="note">急いでいる時は、相手、用途、品名だけで保存して、金額やメモはあとから編集できます。</p>
+          <p class="note">急いでいる時は、お相手、用途、品名だけで保存して、金額やメモはあとから編集できます。</p>
         </div>
       </div>
     </section>
@@ -996,12 +996,12 @@
         <div class="section-title">
           <span class="eyebrow">入力の分け方</span>
           <h2 id="type-title">「頂き物」と「贈り品」を分けると、返礼忘れを見つけやすくなります。</h2>
-          <p>同じ相手でも、頂き物の記録と自分が用意した贈り品の記録を別々に保存します。あとから人物履歴でまとめて見られます。</p>
+          <p>同じお相手でも、頂き物の記録と自分が用意した贈り品の記録を別々に保存します。あとから人タブでまとめて見られます。</p>
         </div>
         <div class="two-column">
           <article class="manual-card">
             <h3>頂き物の記録</h3>
-            <p>相手から受け取った頂き物を保存します。金額が分からない時は、次回の返礼を考えるための目安として入力します。</p>
+            <p>お相手から受け取った頂き物を保存します。金額が分からない時は、次回の返礼を考えるための目安として入力します。</p>
             <ul class="check-list">
               <li>頂き物を受け取った日を入れる</li>
               <li>品名と用途を入れる</li>
@@ -1031,19 +1031,19 @@
           <p>「どんな頂き物を受け取ったから、何を返礼したか」を残しておくと、翌年の金額感や品物選びが楽になります。</p>
           <ol class="manual-list">
             <li>
-              <span><strong>未返礼の記録を確認する</strong>記録一覧の未返礼表示から、まだ返礼がない頂き物を確認します。</span>
+              <span><strong>未返礼の記録を確認する</strong>一覧の未返礼表示から、まだ返礼がない頂き物を確認します。</span>
             </li>
             <li>
               <span><strong>返礼の記録を追加する</strong>種別を「贈り品」にして、品名、金額、予定日を入力します。</span>
             </li>
             <li>
-              <span><strong>返礼リンクで元の記録を選ぶ</strong>対象の頂き物を選ぶと、人物履歴で関係が追いやすくなります。</span>
+              <span><strong>返礼リンクで元の記録を選ぶ</strong>対象の頂き物を選ぶと、人タブで関係が追いやすくなります。</span>
             </li>
           </ol>
         </div>
         <figure class="image-frame">
           <img src="assets/usage-recording.png" alt="頂き物を写真付きで記録し、返礼候補を考える使用シーン" width="1448" height="1086">
-          <figcaption>頂き物を受け取った直後に写真と相手を残しておくと、あとから返礼を考えやすくなります。</figcaption>
+          <figcaption>頂き物を受け取った直後に写真とお相手を残しておくと、あとから返礼を考えやすくなります。</figcaption>
         </figure>
       </div>
     </section>
@@ -1052,19 +1052,19 @@
       <div class="section-inner">
         <div class="section-title">
           <span class="eyebrow">探し方</span>
-          <h2 id="history-title">一覧、人物履歴、カレンダーを目的別に使い分けます。</h2>
+          <h2 id="history-title">一覧、人、カレンダーを目的別に使い分けます。</h2>
           <p>探したい内容によって見る画面を変えると、必要な記録に早くたどり着けます。</p>
         </div>
         <div class="phone-row">
           <article class="phone-shot card">
-            <img src="assets/manual-record.jpg" alt="記録一覧画面。日付順の贈答記録と未返礼件数を確認できる" width="368" height="800">
-            <h3>記録一覧</h3>
+            <img src="assets/manual-record.jpg" alt="一覧画面。日付順の贈答記録と未返礼件数を確認できる" width="368" height="800">
+            <h3>一覧</h3>
             <p>最近の記録、未返礼、検索、頂き物/贈り品の絞り込みに使います。</p>
           </article>
           <article class="phone-shot card">
-            <img src="assets/manual-history.jpg" alt="人物履歴画面。相手ごとに誕生日と記録件数が並ぶ" width="368" height="800">
-            <h3>人物履歴</h3>
-            <p>相手ごとに、頂き物と贈り品を時系列で確認します。</p>
+            <img src="assets/manual-history.jpg" alt="人画面。お相手ごとに誕生日と記録件数が並ぶ" width="368" height="800">
+            <h3>人</h3>
+            <p>お相手ごとに、頂き物と贈り品を時系列で確認します。</p>
           </article>
           <article class="phone-shot card">
             <img src="assets/manual-calendar.jpg" alt="カレンダー画面。誕生日、配送予定、返礼予定を月表示で確認できる" width="368" height="800">
@@ -1079,7 +1079,7 @@
       <div class="section-inner manual-grid">
         <div class="manual-card">
           <span class="eyebrow">誕生日・記念日</span>
-          <h2 id="calendar-title">カレンダーには、相手の誕生日と予定を登録します。</h2>
+          <h2 id="calendar-title">カレンダーには、お相手の誕生日と予定を登録します。</h2>
           <p>贈り品は当日ではなく、少し前から準備が必要です。カレンダーに入れておくと、月の予定として確認できます。</p>
           <ol class="manual-list">
             <li>
@@ -1089,7 +1089,7 @@
               <span><strong>右上の追加ボタンで予定を入れる</strong>誕生日、記念日、その他の予定を登録します。</span>
             </li>
             <li>
-              <span><strong>相手を選んで保存する</strong>人物履歴と予定がつながり、あとから見返しやすくなります。</span>
+              <span><strong>お相手を選んで保存する</strong>人タブの履歴と予定がつながり、あとから見返しやすくなります。</span>
             </li>
           </ol>
         </div>
@@ -1131,7 +1131,7 @@
         <div class="section-title">
           <span class="eyebrow">設定と保存</span>
           <h2 id="settings-title">端末内保存を前提に、必要な時だけ書き出します。</h2>
-          <p>記録、写真、連絡先ID、通知設定はiPhone内で扱う前提です。一覧保存は、本人が操作した時だけCSVとして共有できます。</p>
+          <p>記録、写真、お相手、通知設定はiPhone内で扱う前提です。一覧保存は、本人が操作した時だけCSVとして共有できます。</p>
         </div>
         <div class="support-grid">
           <article class="support-card">
@@ -1162,8 +1162,8 @@
             <p>正確な金額ではなく、次回の返礼を考えるための想定金額として入力します。分からない場合は未入力のままでも記録できます。</p>
           </details>
           <details>
-            <summary>相手を連絡先から選ばなくても使えますか？</summary>
-            <p>使えます。連絡先連携は任意です。名前を手入力するだけでも人物履歴として整理できます。</p>
+            <summary>iPhone連絡先は必要ですか？</summary>
+            <p>不要です。贈答メモリー内のお相手を選択または新規作成し、人タブの履歴として整理できます。</p>
           </details>
           <details>
             <summary>写真は必ず必要ですか？</summary>
@@ -1171,7 +1171,7 @@
           </details>
           <details>
             <summary>返礼済みかどうかはどこで見ますか？</summary>
-            <p>記録一覧の未返礼表示を確認します。返礼の記録を元の頂き物に紐付けると、未返礼から外れます。</p>
+            <p>一覧の未返礼表示を確認します。返礼の記録を元の頂き物に紐付けると、未返礼から外れます。</p>
           </details>
           <details>
             <summary>通知が出ない時は何を確認しますか？</summary>
@@ -1179,7 +1179,7 @@
           </details>
           <details>
             <summary>取引先や仕事の手土産にも使えますか？</summary>
-            <p>使えます。相手ごとの金額感、好み、避けたい品物、過去に渡した贈り品の履歴を残す用途に向いています。</p>
+            <p>使えます。お相手ごとの金額感、好み、避けたい品物、過去に渡した贈り品の履歴を残す用途に向いています。</p>
           </details>
         </div>
       </div>
@@ -1187,7 +1187,7 @@
 
     <section class="final-cta" aria-labelledby="final-title">
       <div class="section-inner">
-        <h2 id="final-title"><span class="keep">迷ったら、</span><span class="keep">写真と相手だけ先に残す。</span></h2>
+        <h2 id="final-title"><span class="keep">迷ったら、</span><span class="keep">写真とお相手だけ先に残す。</span></h2>
         <p>贈答メモリーは、あとから整えられる台帳です。まずは記録を残し、必要な時に履歴、返礼、通知、CSV保存へ広げていきます。</p>
         <div class="final-actions">
           <a class="button" href="#top">上からもう一度見る</a>
