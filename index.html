@@ -884,17 +884,18 @@
       }
 
       .gallery-card.wide img {
-        width: min(100%, 360px);
-        margin: 16px auto 0;
+        width: 100%;
+        margin: 0;
         border: 1px solid rgba(224, 213, 195, .9);
-        border-radius: 28px;
-        box-shadow: 0 14px 34px rgba(55, 42, 26, .14);
+        border-width: 0 0 1px;
+        border-radius: 0;
+        box-shadow: none;
       }
 
       .hero .image-card picture img {
-        width: min(100%, 360px);
-        margin: 0 auto;
-        border-radius: 28px;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
         background: #fffaf0;
       }
 
@@ -970,7 +971,7 @@
         </div>
         <figure class="image-card">
           <picture>
-            <source media="(max-width: 640px)" srcset="assets/manual-record.jpg">
+            <source media="(max-width: 640px)" srcset="assets/usage-recording.png">
             <img src="assets/hero-flyer.png" alt="贈答メモリーの利用シーンとキャッチコピーを入れたメインビジュアル" width="1672" height="941">
           </picture>
           <figcaption>写真・お相手・日付・<span class="keep">リマインダー</span>を端末内で記録する、贈答メモリーの画面イメージ。</figcaption>
@@ -1126,7 +1127,6 @@
           </article>
           <article class="gallery-card wide card">
             <picture>
-              <source media="(max-width: 640px)" srcset="assets/manual-history.jpg">
               <img src="assets/ui-screens.png" alt="一覧、人、カレンダーで贈答履歴を管理するアプリ画面" width="1672" height="941">
             </picture>
             <div>
