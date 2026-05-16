@@ -32,7 +32,7 @@
       --white: #ffffff;
       --shadow: 0 18px 45px rgba(55, 42, 26, .14);
       --radius: 8px;
-      --inner: min(1120px, calc(100% - 32px));
+      --inner: min(1280px, calc(100% - 32px));
     }
 
     * {
@@ -205,8 +205,8 @@
       width: var(--inner);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
-      gap: 36px;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: 40px;
       align-items: center;
       padding: 46px 0 48px;
     }
@@ -392,7 +392,7 @@
     }
 
     .manual-grid {
-      grid-template-columns: .92fr 1.08fr;
+      grid-template-columns: 1.08fr .92fr;
       align-items: center;
       gap: 32px;
     }
@@ -415,7 +415,7 @@
     }
 
     .phone-shot img {
-      width: min(100%, 230px);
+      width: min(100%, 320px);
       margin: 0 auto;
       border-radius: 28px;
       border: 1px solid rgba(223, 210, 191, .9);
@@ -505,13 +505,13 @@
     }
 
     .screen-grid {
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.12fr .88fr;
       align-items: center;
       gap: 30px;
     }
 
     .screen-grid .image-frame img {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: auto;
     }
 
     .check-list {
